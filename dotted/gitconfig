@@ -1,0 +1,29 @@
+[user]
+  name = Cristi Balan
+  email = evil@che.lu
+
+[alias]
+  ci = commit
+  co = checkout
+  st = status
+  br = branch
+  diffc = diff --cached
+
+[apply]
+  whitespace = strip
+
+[diff]
+  color = auto
+  rename = copy
+
+[pager]
+  color = true
+
+[status]
+  color = auto
+
+[core]
+  excludesfile = /Users/chelu/.gitignore
+
+[merge]
+  summary = true

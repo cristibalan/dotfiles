@@ -1,0 +1,3 @@
+#!/bin/bash
+EDITOR="g"
+/opt/local/bin/mc -d $*

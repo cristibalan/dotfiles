@@ -1,0 +1,10 @@
+# http://szeryf.wordpress.com/2007/07/30/way-beyond-cool-autotest-growl-doomguy/
+# http://fozworks.com/2007/7/28/autotest-sound-effects
+# http://wiki.rubyonrails.org/rails/pages/HowtoUseVimWithRails
+#require 'autotest/redgreen'
+#require 'autotest/timestamp'
+require 'autotest/growl'
+
+Autotest.add_hook :initialize do |at|
+  %w{.svn .hg .git db doc log public script tmp vendor/rails}.each {|exception|at.add_exception(exception)}
+end

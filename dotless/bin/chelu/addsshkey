@@ -1,0 +1,19 @@
+#!/bin/sh
+
+KEY="$HOME/.ssh/id_dsa.pub"
+
+if [ ! -f $KEY ];then
+  echo "private key not found at $KEY"
+  echo "please create it with \"ssh-keygen -t dsa\""
+  exit
+fi
+
+if [ -z $1 ];then
+  echo "Usage: $0 username@host"
+  exit
+fi
+
+echo "Putting your key on $1... "
+ssh -q $* "umask 0077; mkdir -p ~/.ssh ; echo "`cat $KEY`" >> ~/.ssh/authorized_keys"
+echo "done!"
+

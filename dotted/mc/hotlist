@@ -1,0 +1,7 @@
+ENTRY "/Users/chelu/work" URL "/Users/chelu/work"
+ENTRY "/Users/chelu" URL "/Users/chelu"
+ENTRY "/" URL "/"
+ENTRY "/mnt" URL "/mnt"
+ENTRY "/opt/local/lib/ruby" URL "/opt/local/lib/ruby"
+ENTRY "/System/Library/Frameworks/Ruby.framework" URL "/System/Library/Frameworks/Ruby.framework"
+ENTRY "/Library/Ruby" URL "/Library/Ruby"

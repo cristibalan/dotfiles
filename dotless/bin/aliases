@@ -1,0 +1,68 @@
+# common
+alias vi="v"
+alias vim="v"
+alias gvim="g"
+alias c="clear"
+alias l="ls -AGlFT"
+alias lt="ls -AGlFTtr"
+
+# bash
+alias reload="source ~/.profile"
+alias rc='v ~/.profile && source ~/.profile'
+alias lc="cl"
+function cl() { cd "$@" && l; }
+#function cl () {
+#   if [ $# = 0 ]; then
+#      cd && l
+#   else
+#      cd "$*" && l
+#   fi
+#}
+function mkd() {
+  mkdir -p "$*" && cd "$*" && pwd
+}
+
+# make top default to ordering by CPU usage:
+alias top='top -ocpu'
+# more lightweight version of top which doesn't use so much CPU itself:
+alias ttop='top -ocpu -R -F -s 2 -n30'
+
+# TODO
+#fs [alias for "find . -wholename '*.svn' -prune -o -type f -print0 | xargs -0 grep -li"]
+
+# git svn
+alias gs="git svn"
+alias gsr="git svn rebase"
+alias gsd="git svn dcommit"
+
+# git
+alias gl="git log"
+alias ga="git add"
+alias gr="git reset"
+alias gst="git status"
+
+alias gd="git diff"
+alias gdc="git diff --cached"
+
+alias g-update-deleted="git ls-files -z --deleted | git update-index -z --remove --stdin"
+#alias gstt="git ls-files --exclude-per-directory=.gitignore --exclude-from=.git/info/exclude --others --modified -t"
+
+alias gb="git branch"
+alias gba="git branch -a -v"
+
+alias gfr="git fetch && git rebase refs/remotes/origin/master"
+alias gci="git commit"
+alias gco="git checkout"
+function gco {
+  if [ -z "$1" ]; then
+    git checkout master
+  else
+    git checkout $1
+  fi
+}
+
+# rails
+alias ms="mongrel_rails start"
+alias mig="rake db:migrate"
+alias migt="rake db:migrate RAILS_ENV=test"
+
