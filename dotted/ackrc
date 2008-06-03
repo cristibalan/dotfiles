@@ -1,0 +1,14 @@
+--pager=less -R -N -X
+--noheading
+--break
+--color
+
+# extra file types
+--type-add
+ruby=.rake
+
+--type-set
+sass=.sass
+
+--type-set
+haml=.haml
