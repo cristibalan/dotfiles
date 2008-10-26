@@ -86,9 +86,10 @@ set showmode                  " show mode in status when not in normal mode
 set virtualedit=block
 set noerrorbells
 set visualbell                " must turn visual bell on to remove audio bell
-set t_vb=                     " turn bells of, must also set this in .gvimrc
+set t_vb=                     " turn bells off, must also set this in .gvimrc
 set wildmenu                  " nice menu when completing commands
 set wildmode=list:longest,full
+set fuoptions=maxvert,maxhorz
 
 if has("win32")
   set guifont=DejaVu_Sans_Mono:h10
@@ -137,12 +138,13 @@ call CHELU_spaces()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""" taglist settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let Tlist_Ctags_Cmd = "/usr/bin/ctags"
-"let Tlist_Compact_Format = 1
-"let Tlist_File_Fold_Auto_Close = 1
-"let Tlist_Use_Right_Window = 1
-"let Tlist_Exit_OnlyWindow = 1
-"let Tlist_WinWidth = 40 
+runtime taglist.vim
+let Tlist_Ctags_Cmd = "/opt/local/bin/ctags"
+let Tlist_Compact_Format = 1
+let Tlist_File_Fold_Auto_Close = 1
+let Tlist_Use_Right_Window = 1
+let Tlist_Exit_OnlyWindow = 1
+let Tlist_WinWidth = 40 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""" MiniBufExplorer / tabbar
@@ -159,6 +161,13 @@ call CHELU_spaces()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let NERDTreeChDirMode = 0 " don't change dirs
 let NERDTreeWinSize = 60
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""" NERDCommenter settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:NERDMapleader='<space>'
+let g:NERDRemoveExtraSpaces=1
+let g:NERDSpaceDelims=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""" TOhtml
@@ -233,18 +242,18 @@ let g:template{'vim'}{'fun'} = "function! ()\<CR>endfunction\<Up>\<End>\<Left>\<
 
 " rails - erb
 let g:template{'_'}{'rr'}  = "<%  -%>\<Left>\<Left>\<Left>\<Left>"
-let g:template{'_'}{'re'}  = "<%=  -%>\<Left>\<Left>\<Left>\<Left>"
+let g:template{'_'}{'ree'}  = "<%=  -%>\<Left>\<Left>\<Left>\<Left>"
 let g:template{'_'}{'rrr'} = "<%  %>\<Left>\<Left>\<Left>"
 let g:template{'_'}{'rre'} = "<%=  %>\<Left>\<Left>\<Left>"
 let g:template{'_'}{'cc'} = "/*  */\<Left>\<Left>\<Left>"
 let g:template{'_'}{'hh'} = "<!--  -->\<Left>\<Left>\<Left>\<Left>"
 let g:template{'_'}{'le'} = "{{  }}\<Left>\<Left>\<Left>"
-let g:template{'_'}{'ll'} = "{%  %}\<Left>\<Left>\<Left>"
+let g:template{'_'}{'lll'} = "{%  %}\<Left>\<Left>\<Left>"
 
 " rails rspec
 let g:template{'ruby'}{'rde'} = "describe \"\" do\n  \n\<BS>end\n\<Up>\<Up>\<Up>" . repeat("\<RIGHT>", 10)
 let g:template{'ruby'}{'rit'} = "it \"should \" do\n  \n\<BS>end\n\<BS>\<Up>\<Up>\<Up>" . repeat("\<RIGHT>", 13)
-let g:template{'ruby'}{'rbe'} = "before(:each) do\n  \n\<BS>end\n\<Up>\<Up>" . repeat("\<RIGHT>", 2)
+let g:template{'ruby'}{'rbe'} = "before do\n  \n\<BS>end\n\<Up>\<Up>" . repeat("\<RIGHT>", 2)
 let g:template{'ruby'}{'rbea'} = "before do\n  \n\<BS>end\n\<Up>\<Up>" . repeat("\<RIGHT>", 2)
 let g:template{'ruby'}{'rhe'} = "module SpecHelper\<CR>  def valid_attributes\<CR>  {\<CR>  : => '',\<CR>\<BS>}\<CR>\<BS>end\<CR>\<BS>end\<CR>" . repeat("\<UP>", 7) . repeat("\<RIGHT>", 7)
 
@@ -276,7 +285,7 @@ let g:template{'css'}{'vm'}  = "vertical-align: middle;"
 let g:template{'sass'}{'fl'}  = "float: left\<CR>display: inline\<CR>"
 let g:template{'sass'}{'fr'}  = "float: right\<CR>display: inline\<CR>"
 let g:template{'sass'}{'bg'}  = "background: url(../images/.gif) left top no-repeat" . repeat("\<Left>", 24)
-let g:template{'sass'}{'bgi'} = "background: url(../images/.gif)" . repeat("\<Left>", 5)
+let g:template{'sass'}{'bgi'} = "background-image: url(../images/.gif)" . repeat("\<Left>", 5)
 let g:template{'sass'}{'bgc'} = "background-color: #"
 let g:template{'sass'}{'bn'}  = "background: none"
 let g:template{'sass'}{'bo'}  = "border: solid 1px #"
@@ -455,7 +464,7 @@ inoremap <S-CR> <C-o>o
 inoremap <D-CR> <C-o>O
 
 """""""""" tools
-call KeyMap('ni', 'L',    'f',       ':let @+ = expand("%:p")<CR>')   " copy current filename in clipboard
+"call KeyMap('ni', 'L',    'f',       ':let @+ = expand("%:p")<CR>')   " copy current filename in clipboard
 " TODO
 " move these to a function
 call KeyMap('ni', 'L',    'e',       ':call BrowserFromCurrentDir()<CR>') " open a file browser in a new tab
@@ -463,15 +472,10 @@ call KeyMap('ni', 'L',    'E',       ':call BrowserFromCurrentFilePath()<CR>') "
 
 "call KeyMap('ni', 'L',    'x',       ':ExtractFileToTabpage()<CR>')   " extract current file to a new buffer
 
-call KeyMap('n',  'L',    'r',       ':%s/\n\n/\r/<CR>')
-call KeyMap('v',  'L',    'r',       ':s/\n\n/\r/<CR>')
-call KeyMap('n',  'L',    'R',       ':%s/\s\s*$//<CR>')
-call KeyMap('v',  'L',    'R',       ':s/\s\s*//<CR>')
-
-call KeyMap('n',  'L',    'c',       ':%s/^/#/<CR>')
-call KeyMap('v',  'L',    'c',       ':s/^/#/<CR>')
-call KeyMap('n',  'L',    'C',       ':%s/^\s*#//<CR>')
-call KeyMap('v',  'L',    'C',       ':s/^\s*#//<CR>')
+" call KeyMap('n',  'L',    'r',       ':%s/\n\n/\r/<CR>')
+" call KeyMap('v',  'L',    'r',       ':s/\n\n/\r/<CR>')
+" call KeyMap('n',  'L',    'R',       ':%s/\s\s*$//<CR>')
+" call KeyMap('v',  'L',    'R',       ':s/\s\s*//<CR>')
 
 if has("macunix")
   call KeyMap('n',  'DLM',  'k',       ':call GuiSizeNext()<CR>')
@@ -482,8 +486,23 @@ endif
 call KeyMap('ni', 'L',    'q',       ':exec "NERDTreeToggle " . getcwd()<CR>') " Toggle NERDTree
 call KeyMap('ni', 'L',    'Q',       ':exec "NERDTreeToggle " . GetCwdCurrent()<CR>') " Toggle NERDTree
 call KeyMap('n',  'L',    '`',       ':NERDTreeToggle<CR>')
+call KeyMap('n',  'L',    'x',       'xx\<down>x\<up>\<up>p\<up>udw$d6hx')
 
 "call KeyMap('i',  'DLM',  '/',       '/')
 
 map <leader>hl  :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+"nmap <silent> <leader> <Plug>DiffChangesDiffToggle
+"nmap <silent> cac xx<down>x<up><up>p<up>udw$d6hx
+
+function! XXX()
+  let f = expand("%:p")
+  let f = substitute(f, "newlyn", "newlynhtml", "")
+  let f = substitute(f, "html.haml", "rhtml", "")
+  tabnew
+  exec "e " . f
+endfunction
+call KeyMap('ni', 'L',    'f',       ':call XXX()<CR>') " Toggle NERDTree
+call KeyMap('ni', 'CDLM', 'p',       ':TlistToggle<CR>')
+
 

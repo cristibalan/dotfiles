@@ -34,7 +34,7 @@ call add(g:SIZES, { "columns": 114, "columnsfs": 115, "lines":28, "linesfs": 29,
 
 function! GuiSizeSet(size)
   if eval(&fullscreen)
-    exec "set columns=" . g:SIZES[a:size].columnsfs . " lines=" . g:SIZES[a:size].linesfs
+    "exec "set columns=" . g:SIZES[a:size].columnsfs . " lines=" . g:SIZES[a:size].linesfs
   else
     exec "set columns=" . g:SIZES[a:size].columns . " lines=" . g:SIZES[a:size].lines
   end
@@ -442,6 +442,7 @@ function! KeyMapExec(mode, modifier, key, action)
   endif
 
   " \o/\O/\o/
+  "echo s:map
   execute s:map
 
 endfunction
@@ -665,3 +666,20 @@ ruby << EOF
 =end
 EOF
 endfunction
+
+function! VampRegisterToMap_(register)
+  let keycodes = { 'ku': {'name': 'Up', 'meaning': 'arrow up'}, 'kd': {'name': 'Down', 'meaning': 'arrow down'}, 'kr': {'name': 'Right', 'meaning': 'arrow right'}, 'kl': {'name': 'Left', 'meaning': 'arrow left'}, '%i': {'name': 'S-Right', 'meaning': 'shift arrow right'}, '#4': {'name': 'S-Left', 'meaning': 'shift arrow left'}, 'k1': {'name': 'F1', 'meaning': 'function key 1'}, 'k2': {'name': 'F2', 'meaning': 'function key 2'}, 'k3': {'name': 'F3', 'meaning': 'function key 3'}, 'k4': {'name': 'F4', 'meaning': 'function key 4'}, 'k5': {'name': 'F5', 'meaning': 'function key 5'}, 'k6': {'name': 'F6', 'meaning': 'function key 6'}, 'k7': {'name': 'F7', 'meaning': 'function key 7'}, 'k8': {'name': 'F8', 'meaning': 'function key 8'}, 'k9': {'name': 'F9', 'meaning': 'function key 9'}, 'k;': {'name': 'F10', 'meaning': 'function key 10'}, 'F1': {'name': 'F11', 'meaning': 'function key 11'}, 'F2': {'name': 'F12', 'meaning': 'function key 12'}, 'F3': {'name': 'F13', 'meaning': 'function key 13'}, 'F4': {'name': 'F14', 'meaning': 'function key 14'}, 'F5': {'name': 'F15', 'meaning': 'function key 15'}, 'F6': {'name': 'F16', 'meaning': 'function key 16'}, 'F7': {'name': 'F17', 'meaning': 'function key 17'}, 'F8': {'name': 'F18', 'meaning': 'function key 18'}, 'F9': {'name': 'F19', 'meaning': 'function key 19'}, '%1': {'name': 'Help', 'meaning': 'help key'}, '&8': {'name': 'Undo', 'meaning': 'undo key'}, 'kI': {'name': 'Insert', 'meaning': 'insert key'}, 'kD': {'name': 'Del', 'meaning': 'delete key'}, 'kb': {'name': 'BS', 'meaning': 'backspace key'}, 'kB': {'name': 'S-Tab', 'meaning': 'back-tab (shift-tab)'}, 'kh': {'name': 'Home', 'meaning': 'home key'}, '#2': {'name': 'S-Home', 'meaning': 'shifted home key'}, '@7': {'name': 'End', 'meaning': 'end key'}, '*7': {'name': 'S-End', 'meaning': 'shifted end key'}, 'kP': {'name': 'PageUp', 'meaning': 'page-up key'}, 'kN': {'name': 'PageDown', 'meaning': 'page-down key'}, 'K1': {'name': 'kHome', 'meaning': 'keypad home key'}, 'K4': {'name': 'kEnd', 'meaning': 'keypad end key'}, 'K3': {'name': 'kPageUp', 'meaning': 'keypad page-up key'}, 'K5': {'name': 'kPageDown', 'meaning': 'keypad page-down key'}, 'K6': {'name': 'kPlus', 'meaning': 'keypad plus key'}, 'K7': {'name': 'kMinus', 'meaning': 'keypad minus key'}, 'K8': {'name': 'kDivide', 'meaning': 'keypad divide'}, 'K9': {'name': 'kMultiply', 'meaning': 'keypad multiply'}, 'KA': {'name': 'kEnter', 'meaning': 'keypad enter key'}, 'KB': {'name': 'kPoint', 'meaning': 'keypad decimal point'}, 'KC': {'name': 'k0', 'meaning': 'keypad 0'}, 'KD': {'name': 'k1', 'meaning': 'keypad 1'}, 'KE': {'name': 'k2', 'meaning': 'keypad 2'}, 'KF': {'name': 'k3', 'meaning': 'keypad 3'}, 'KG': {'name': 'k4', 'meaning': 'keypad 4'}, 'KH': {'name': 'k5', 'meaning': 'keypad 5'}, 'KI': {'name': 'k6', 'meaning': 'keypad 6'}, 'KJ': {'name': 'k7', 'meaning': 'keypad 7'}, 'KK': {'name': 'k8', 'meaning': 'keypad 8'}, 'KL': {'name': 'k9', 'meaning': 'keypad 9'} }
+
+  let s = strtrans(eval("@" . a:register))
+	for [code, details] in items(keycodes)
+    " fuckin substitute()!
+    " it eats the next char after the <80>
+    " so i'm hacking it using strtrans
+    "let s = substitute(s, "\\%x80" . key, "<" . value . ">", "g")
+    "let s = substitute(s, "<80>" . code, "(" . details['meaning'] . ") ", "g")
+    let s = substitute(s, "<80>" . code, "<" . details['name'] . ">", "g")
+	endfor
+  echo s
+endfunction
+command! -nargs=1  VampRegisterToMap :call VampRegisterToMap_(<args>)
+

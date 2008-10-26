@@ -1,0 +1,51 @@
+#!/usr/bin/env ruby
+home = File.expand_path(ENV['HOME'])
+
+run = ARGV.shift if ARGV[0] == "--run"
+dryrun = run != "--run"
+debug = false
+
+# puts "DRYRUN: use --run as first parameter to actually run" if dryrun
+
+files = []
+ARGV.each do |arg|
+  Dir[arg].each do |file|
+    files << File.expand_path(file)
+  end
+end
+
+files.each do |file|
+  next if File.symlink? file
+
+  target = file.gsub(home + "/", "")
+  dotted = target[0].chr == "."
+
+  dir = dotted ? "dotted" : "dotless"
+  dir = File.join(home, "dotfiles", dir)
+  target = target[1..-1] if dotted
+  target = File.join(dir, target)
+
+  if File.file? file
+    if File.exists? target
+      puts "#{target} already exists. Skipping"
+      next
+    end
+    if dryrun || debug
+      puts "mkdir -p #{File.dirname(target)}"
+      puts "mv #{file} #{target}"
+    end
+    unless dryrun
+      `mkdir -p "#{File.dirname(target)}"`
+      `mv "#{file}" "#{target}"`
+    end
+  else
+    if dryrun || debug
+      puts "mkdir -p #{target}"
+    end
+    unless dryrun
+      `mkdir -p "#{target}"`
+    end
+  end
+end
+
+puts "DRYRUN: use --run as first parameter to actually run" if dryrun

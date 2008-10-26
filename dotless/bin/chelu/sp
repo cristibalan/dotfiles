@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+# usage:
+# sp "spec/controllers/user/*.rb"
+# sp spec/models/comic_spec.rb models
+# sp spec/models/comic_spec.rb -l 20 models
+
+files = ARGV.shift
+dir = ARGV.pop
+
+if dir.nil?
+  dir = ""
+else
+  if %w(controllers helpers models views).include? dir
+    dir += "/"
+  else
+    ARGV.push dir
+    dir = ""
+  end
+end
+
+action = "./script/spec --color --format=specdoc #{files} #{ARGV.join(" ")}"
+cmd = %(rstakeout.rb "#{action}" "lib/**/*.rb" "app/#{dir}**/*.rb" "spec/#{dir}**/*.rb" "slices/*/app/#{dir}**/*.rb")
+
+system(cmd)

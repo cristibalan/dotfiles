@@ -1,0 +1,12 @@
+" 1.2 (created: 2008/08/16 18:51:52)
+" Mappings
+
+" Options
+set guioptions=T
+set showtabline=1
+
+" Abbreviations
+
+source! ~/.vimperatorrc.local
+
+" vim: set ft=vimperator:

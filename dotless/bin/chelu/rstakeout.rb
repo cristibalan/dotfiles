@@ -24,6 +24,11 @@ ARGV.each do |arg|
   }
 end
 
+puts "=> first run"
+puts "=> #{command}"
+system(command)
+puts "=> done"
+
 puts "Watching #{files.keys.join(', ')}\n\nFiles: #{files.keys.length}"
 
 trap('INT') do
@@ -42,7 +47,8 @@ loop do
 
   if changed_file
     files[changed_file] = File.mtime(changed_file)
-    puts "=> #{changed_file} changed, running #{command}"
+    puts "=> #{changed_file} changed"
+    puts "=> #{command}"
     system(command)
     puts "=> done"
   end

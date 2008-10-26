@@ -1,3 +1,7 @@
+#tmp
+alias pls="punch log symbolya"
+alias ack="ack -i -a"
+
 # common
 alias vi="v"
 alias vim="v"
@@ -5,12 +9,20 @@ alias gvim="g"
 alias c="clear"
 alias l="ls -AGlFT"
 alias lt="ls -AGlFTtr"
+alias g?="grep -e $1"
+#alias cd="cd && git status"
 
 # bash
 alias reload="source ~/.profile"
 alias rc='v ~/.profile && source ~/.profile'
 alias lc="cl"
 function cl() { cd "$@" && l; }
+function cs () {
+  cd "$@"
+  if [ -n "$(git status 2>/dev/null)" ]; then
+    echo "$(git status 2>/dev/null)"
+  fi
+}
 #function cl () {
 #   if [ $# = 0 ]; then
 #      cd && l
@@ -31,9 +43,11 @@ alias ttop='top -ocpu -R -F -s 2 -n30'
 #fs [alias for "find . -wholename '*.svn' -prune -o -type f -print0 | xargs -0 grep -li"]
 
 # git svn
-alias gs="git svn"
-alias gsr="git svn rebase"
-alias gsd="git svn dcommit"
+# alias gs="git svn"
+# alias gsr="git svn rebase"
+# alias gsd="git svn dcommit"
+alias gss="git stash save"
+alias gsp="git stash pop"
 
 # git
 alias gl="git log"
@@ -62,6 +76,7 @@ function gco {
 }
 
 # rails
+alias rake?="rake -T | g? $1"
 alias ms="mongrel_rails start"
 alias mig="rake db:migrate"
 alias migt="rake db:migrate RAILS_ENV=test"

@@ -8,9 +8,10 @@
   st = status
   br = branch
   diffc = diff --cached
+  put = push origin HEAD
 
 [apply]
-  whitespace = strip
+  whitespace = nowarn
 
 [diff]
   color = auto
@@ -27,3 +28,11 @@
 
 [merge]
   summary = true
+
+# also need this line in .gitattributes:
+# *.rb diff=ruby
+[diff "ruby"]
+  funcname = ^ *\\(\\(class\\|module\\|def\\) .*\\)
+[github]
+	user = evilchelu
+	token = bc4bf8b50e934755d353100d920065e7

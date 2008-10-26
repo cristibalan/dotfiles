@@ -1,0 +1,41 @@
+#!/usr/bin/env ruby
+home = File.expand_path(ENV['HOME'])
+
+
+run = ARGV.shift if ARGV[0] == "--run"
+dryrun = run != "--run"
+debug = false
+
+# puts "Remeber to handle files in other/"
+# puts "DRYRUN: use --run as first parameter to actually run" if dryrun
+
+Dir["#{home}/dotfiles/dot*/**/*"].each do |file|
+  dot = file =~ /dotfiles\/dotted/ ? "." : ""
+
+  target = dot + file.sub(home + "/", "").gsub(/^dotfiles\/\w*\//, "")
+  target = File.join(home, target)
+
+  if File.file? file
+    if !File.exists?(target) || File.symlink?(target)
+      if dryrun || debug
+        puts "ln -s -f -v #{File.expand_path file} #{target}"
+      end
+      unless dryrun
+        `ln -s -f -v "#{File.expand_path file}" "#{target}"`
+      end
+    else
+      puts "#{target} is not a symlink. Skipping"
+      next
+    end
+  else
+    if dryrun || debug
+      puts "mkdir -p #{target}"
+    end
+    unless dryrun
+      `mkdir -p "#{target}"`
+    end
+  end
+end
+
+puts "Remeber to handle files in other/"
+puts "DRYRUN: use --run as first parameter to actually run" if dryrun
