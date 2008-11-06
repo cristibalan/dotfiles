@@ -53,6 +53,7 @@ alias gsp="git stash pop"
 alias gl="git log"
 alias ga="git add"
 alias gr="git reset"
+alias gs="git status"
 alias gst="git status"
 
 alias gd="git diff"
