@@ -118,6 +118,20 @@ function! CreateNewFile(newfile)
   exec "e " . crtbufdir . "/" . a:newfile
 endfunction
 
+function! FuzzyReIndexCwd()
+  call FuzzyReIndex(getcwd())
+endfunction
+function! FuzzyReIndex(dir)
+  " dir is not:
+  "   work/archive
+  " and dir is:
+  "   work/*/*
+  "   src/*
+  if ((a:dir !~ 'work\/(archive)') && (a:dir =~ 'work\/\w\w*\/\w\w*' || a:dir =~ 'work\/\w\w*'))
+    echo "reindexing " . a:dir
+    FuzzyFinderTextMateRefreshFiles
+  endif
+endfunction
 let g:CWD = ""
 function! Cd(cd)
   exec "cd " . a:cd
@@ -150,6 +164,7 @@ endfunction
 
 function! CwdCurrent()
   call Cd(GetCwdCurrent())
+  call FuzzyReIndexCwd()
 endfunction
 
 function! CwdUp()

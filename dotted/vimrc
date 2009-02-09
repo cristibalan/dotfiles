@@ -129,6 +129,17 @@ let g:netrw_browsex_viewer="open"
 call CHELU_spaces()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""" FuzzyFinder & FuzzyFinderTextMate settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{}}
+let g:FuzzyFinderOptions.Base.key_open_tab = '<CR>'
+let g:FuzzyFinderOptions.Base.key_open = '<C-]>'
+let g:FuzzyFinderOptions.Base.enumerating_limit = 30
+let g:fuzzy_matching_limit = 10000
+let g:fuzzy_path_display = 'abbr'
+let g:fuzzy_ignore = "*.log,tmp/*,vendor/*,public/p/*,public/assets/*,import/*,import_images/*,db/sphinx/*,doc/*"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""" snippetsEmu settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "let g:snip_start_tag = "|>"
@@ -395,6 +406,7 @@ call KeyMap('ni', 'D',    '<M-Right>', ':call MoveTabRight()<CR>')
 call KeyMap('ni', 'DLM',  's',       ':up<CR>')
 call KeyMap('ni', 'DLM',  'w',       ':bw<CR>')
 call KeyMap('ni', 'DLM',  'b',       ':tab ball<CR>')
+call KeyMap('ni', 'DLM',  'r',       ':FuzzyFinderTextMate<CR>')
 
 """""""""" selections
 call KeyMap('n',  'DM',  'a' ,      'ggVG')
