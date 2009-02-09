@@ -23,7 +23,6 @@ set directory=$HOME/tmp/vim,$HOME/tmp,/var/tmp,/tmp,c:\\windows\\temp,$TMP,$TEMP
 runtime evil.che.lu.vim
 runtime macros/matchit.vim
 runtime surround.vim
-runtime plugin/FindFile.vim
 "runtime allml.vim
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -373,7 +372,6 @@ if !has("unix")
 endif
  
 """""""""" tabs
-nnoremap LL :tabmove<CR>:e<CR>
 call KeyMap('ni', 'DLM',  '1',       '1gt')
 call KeyMap('ni', 'DLM',  '2',       '2gt')
 call KeyMap('ni', 'DLM',  '3',       '3gt')
@@ -465,8 +463,6 @@ inoremap <D-CR> <C-o>O
 
 """""""""" tools
 "call KeyMap('ni', 'L',    'f',       ':let @+ = expand("%:p")<CR>')   " copy current filename in clipboard
-" TODO
-" move these to a function
 call KeyMap('ni', 'L',    'e',       ':call BrowserFromCurrentDir()<CR>') " open a file browser in a new tab
 call KeyMap('ni', 'L',    'E',       ':call BrowserFromCurrentFilePath()<CR>') " open a file browser in a new tab
 
@@ -495,14 +491,7 @@ map <leader>hl  :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '>
 "nmap <silent> <leader> <Plug>DiffChangesDiffToggle
 "nmap <silent> cac xx<down>x<up><up>p<up>udw$d6hx
 
-function! XXX()
-  let f = expand("%:p")
-  let f = substitute(f, "newlyn", "newlynhtml", "")
-  let f = substitute(f, "html.haml", "rhtml", "")
-  tabnew
-  exec "e " . f
-endfunction
-call KeyMap('ni', 'L',    'f',       ':call XXX()<CR>') " Toggle NERDTree
 call KeyMap('ni', 'CDLM', 'p',       ':TlistToggle<CR>')
+call KeyMap('n',  '',    'TT',       '::tabnew<CR>:e ~/todo/today.txt<CR>') " Toggle NERDTree
 
 
