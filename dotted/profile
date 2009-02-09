@@ -33,7 +33,8 @@ export GEM_HOME="$HOME/.gems"
 export GEM_PATH="$GEM_HOME" 
 
 export DISPLAY=:0.0
-export EDITOR=v
+export EDITOR=g
+export GIT_EDITOR=gw
 export PAGER=less
 export VIM_APP_DIR=/Applications
 export INPUTRC=~/.inputrc
