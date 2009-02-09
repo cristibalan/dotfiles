@@ -1,22 +1,24 @@
+set bell-style none
+
+# show completions on single tab
+set show-all-if-ambiguous on
 # only for dirs and files
 set completion-ignore-case On
 
-#"\e[3~": delete-char
-
-# ctrl + arrows
-# not worky :/
-#"\e[5C": forward-word
-#"\e[5D": backward-word
-#"\e\e[C": forward-word
-#"\e\e[D": backward-word
-#"\e[1;5C": forward-word
-#"\e[1;5D": backward-word
-#"\eOd": backward-word
-#"\eOc": forward-word
+# some 8 bit crap apparently
+set meta-flag On 
+set input-meta On
 
 # up/down search history
 "\e[B": history-search-forward
 "\e[A": history-search-backward
+
+# alt+backspace
+"\ed": backward-kill-word
+
+# ???
+
+#"\e[3~": delete-char
 
 # ?
 #"\e[1~": beginning-of-line
@@ -24,4 +26,3 @@ set completion-ignore-case On
 #"\e[5~": beginning-of-history
 #"\e[6~": end-of-history
 #"\e[2~": quoted-insert
-"\ed": backward-kill-word
