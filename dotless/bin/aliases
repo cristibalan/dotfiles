@@ -31,7 +31,7 @@ function cs () {
 #   fi
 #}
 function mkd() {
-  mkdir -p "$*" && cd "$*" && pwd
+  mkdir -p "$*" && cd "$*"
 }
 
 # make top default to ordering by CPU usage:
@@ -46,15 +46,22 @@ alias ttop='top -ocpu -R -F -s 2 -n30'
 # alias gs="git svn"
 # alias gsr="git svn rebase"
 # alias gsd="git svn dcommit"
+
+# git
+# alias has="hack && rake && ship"
+alias has="hack && ship"
+
 alias gss="git stash save"
 alias gsp="git stash pop"
 
-# git
 alias gl="git log"
 alias ga="git add"
-alias gr="git reset"
+alias gap="git add --patch"
 alias gs="git status"
 alias gst="git status"
+
+alias gri="git rebase --interactive"
+alias grc="git rebase --continue"
 
 alias gd="git diff"
 alias gdc="git diff --cached"
@@ -63,7 +70,7 @@ alias g-update-deleted="git ls-files -z --deleted | git update-index -z --remove
 #alias gstt="git ls-files --exclude-per-directory=.gitignore --exclude-from=.git/info/exclude --others --modified -t"
 
 alias gb="git branch"
-alias gba="git branch -a -v"
+alias gba="git branch -a -v --color"
 
 alias gfr="git fetch && git rebase refs/remotes/origin/master"
 alias gci="git commit"
@@ -82,3 +89,6 @@ alias ms="mongrel_rails start"
 alias mig="rake db:migrate"
 alias migt="rake db:migrate RAILS_ENV=test"
 
+# stuff
+alias df="df -h"
+alias du="du -hs"
