@@ -1,1 +1,1 @@
-wget -b -c -r -np --limit-rate=1000000 -i _files.txt -o _log.txt
+wget -b -c -r -np --limit-rate=100000 -i _files.txt -o _log.txt
