@@ -1,1 +1,8 @@
 defutf8 on
+altscreen on
+hardstatus on
+hardstatus alwayslastline
+# backtick 1 60 60 /home/zdennis/bin/whatsmyip
+hardstatus string "%-Lw %{= kG}Host: %{Y}%H%? %{c}(%1`) %{= kG} %-=Load: %{Y}%l%{kG}  %{= kG}Date: %{Y}%m/%d/%y%{= kG}  Time: %{Y}%C:%s%a%{= kG}%{W}" 
+caption always
+caption string "%-Lw%{= bw}%50>%n %t%{-}%+Lw%<" 
