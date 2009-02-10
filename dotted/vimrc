@@ -441,6 +441,7 @@ call KeyMap('ni', '',     '<Home>',  ':call HomeKey()<CR>')
 call KeyMap('n',  'CDLM', '-',       ':call CwdUp()<CR>')
 call KeyMap('n',  'CDLM', '=',       ':call CwdDown()<CR>')
 call KeyMap('n',  'CDLM', '0',       ':call CwdCurrent()<CR>')
+call KeyMap('n',  'CDLM', '\',       ':call FuzzyReIndexCwd()<CR>')
 
 """""""""" <3 _
 " helpers to use _ like a word boundary
