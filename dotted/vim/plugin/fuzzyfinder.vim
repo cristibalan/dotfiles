@@ -884,6 +884,9 @@ function! s:OpenFile(path, mode)
           \   ':vsplit ',
           \   ':tabedit ',
           \ ][a:mode] . s:EscapeFilename(a:path)
+      if a:mode == 3
+        tabmove
+      end
   endif
 endfunction
 
