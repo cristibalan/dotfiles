@@ -883,8 +883,9 @@ function! s:OpenFile(path, mode)
           \   ':split ',
           \   ':vsplit ',
           \   ':tabedit ',
+          \   ':tabedit ',
           \ ][a:mode] . s:EscapeFilename(a:path)
-      if a:mode == 3
+      if a:mode == 3 || a:mode == 4
         tabmove
       end
   endif
@@ -922,6 +923,7 @@ function! g:FuzzyFinderMode.Base.launch(initial_text, partial_matching)
         \   [ self.key_open_split , self.to_str('on_cr(1, 0)'            ) ],
         \   [ self.key_open_vsplit, self.to_str('on_cr(2, 0)'            ) ],
         \   [ self.key_open_tab   , self.to_str('on_cr(3, 0)'            ) ],
+        \   [ self.key_open_tab2  , self.to_str('on_cr(4, 0)'            ) ],
         \   [ '<BS>'              , self.to_str('on_bs()'                ) ],
         \   [ '<C-h>'             , self.to_str('on_bs()'                ) ],
         \   [ self.key_next_mode  , self.to_str('on_switch_mode(+1)'     ) ],
@@ -1660,6 +1662,8 @@ let g:FuzzyFinderOptions.Base.key_open_vsplit = '<C-k>'
 " [All Mode] This is mapped to select completion item or finish input and
 " open a buffer/file in a new tab page.
 let g:FuzzyFinderOptions.Base.key_open_tab = '<C-]>'
+" [All Mode] This is mapped to switch to the next mode.
+let g:FuzzyFinderOptions.Base.key_open_tab2 = '<Tab>'
 " [All Mode] This is mapped to switch to the next mode.
 let g:FuzzyFinderOptions.Base.key_next_mode = '<C-l>'
 " [All Mode] This is mapped to switch to the previous mode.
