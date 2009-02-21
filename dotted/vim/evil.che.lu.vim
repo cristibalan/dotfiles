@@ -28,13 +28,13 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:CURRENTSIZE = 1
 let g:SIZES = []
-call add(g:SIZES, { "columns": 179, "columnsfs": 180, "lines":47, "linesfs": 49, "guifont":"Monaco:h11" })
-call add(g:SIZES, { "columns": 156, "columnsfs": 158, "lines":41, "linesfs": 43, "guifont":"Monaco:h13" })
-call add(g:SIZES, { "columns": 114, "columnsfs": 115, "lines":28, "linesfs": 29, "guifont":"Monaco:h18" })
+call add(g:SIZES, { "columns": 179, "columnsfs": 180, "lines":47, "linesfs": 50, "guifont":"Monaco:h11" })
+call add(g:SIZES, { "columns": 156, "columnsfs": 158, "lines":41, "linesfs": 44, "guifont":"Monaco:h13" })
+call add(g:SIZES, { "columns": 114, "columnsfs": 115, "lines":28, "linesfs": 30, "guifont":"Monaco:h18" })
 
 function! GuiSizeSet(size)
   if eval(&fullscreen)
-    "exec "set columns=" . g:SIZES[a:size].columnsfs . " lines=" . g:SIZES[a:size].linesfs
+    exec "set columns=" . g:SIZES[a:size].columnsfs . " lines=" . g:SIZES[a:size].linesfs
   else
     exec "set columns=" . g:SIZES[a:size].columns . " lines=" . g:SIZES[a:size].lines
   end

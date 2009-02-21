@@ -1251,7 +1251,9 @@ function! g:FuzzyFinderMode.Dir.on_complete(base)
 endfunction
 
 function! g:FuzzyFinderMode.Dir.on_open(expr, mode)
-  execute ':cd ' . s:EscapeFilename(a:expr)
+  tabnew
+  tabmove
+  execute ':Explore ' . s:EscapeFilename(a:expr)
 endfunction
 
 function! g:FuzzyFinderMode.Dir.cached_glob_dir(dir, file, excluded, index, limit)

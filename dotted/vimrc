@@ -88,7 +88,7 @@ set visualbell                " must turn visual bell on to remove audio bell
 set t_vb=                     " turn bells off, must also set this in .gvimrc
 set wildmenu                  " nice menu when completing commands
 set wildmode=list:longest,full
-set fuoptions=maxvert,maxhorz
+" set fuoptions=maxvert,maxhorz
 
 if has("win32")
   set guifont=DejaVu_Sans_Mono:h10
@@ -407,6 +407,7 @@ call KeyMap('ni', 'DLM',  's',       ':up<CR>')
 call KeyMap('ni', 'DLM',  'w',       ':bw<CR>')
 call KeyMap('ni', 'DLM',  'b',       ':tab ball<CR>')
 call KeyMap('ni', 'DLM',  'r',       ':FuzzyFinderTextMate<CR>')
+call KeyMap('ni', 'DLM',  'R',       ':FuzzyFinderDir<CR>')
 
 """""""""" selections
 call KeyMap('n',  'DM',  'a' ,      'ggVG')
