@@ -193,6 +193,11 @@ export PS1="\$(git_status)\u@\h \w\$(git_formatted_current_branch_with_dirty)]\$
 
 # http://gist.github.com/48207
 
+
+# this must be after we set PS1
+# http://github.com/rupa/j/tree/master
+source ~/bin/chelu/j.sh
+
 # TODO move these to some other file
 gemdoc() {
   local gemdir=`gem env gemdir`
