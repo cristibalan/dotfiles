@@ -31,8 +31,8 @@ export MERB_SUDO=
 # don't use gems as root
 #alias gemi='gem install --no-rdoc --no-ri -y'
 #alias gemi='gem install -y'
-export GEM_HOME="$HOME/.gems" 
-export GEM_PATH="$GEM_HOME" 
+export GEM_HOME="$HOME/.gem/ruby/1.8"
+export GEM_PATH="$GEM_HOME"
 
 export DISPLAY=:0.0
 export EDITOR=g
