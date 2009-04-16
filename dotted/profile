@@ -24,7 +24,7 @@ export SUDOLESS=true
 export MERB_SUDO=
 
 # in case git colors fuck up
-#export LESS="-erX"
+export LESS="-rX"
 
 . ~/bin/aliases
 
