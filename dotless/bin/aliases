@@ -43,9 +43,9 @@ alias ttop='top -ocpu -R -F -s 2 -n30'
 #fs [alias for "find . -wholename '*.svn' -prune -o -type f -print0 | xargs -0 grep -li"]
 
 # git svn
-# alias gs="git svn"
-# alias gsr="git svn rebase"
-# alias gsd="git svn dcommit"
+alias gs="git svn"
+alias gsr="git svn rebase"
+alias gsd="git svn dcommit"
 
 # git
 # alias has="hack && rake && ship"
@@ -57,11 +57,13 @@ alias gsp="git stash pop"
 alias gl="git log"
 alias ga="git add"
 alias gap="git add --patch"
-alias gs="git status"
+# alias gs="git status"
 alias gst="git status"
 
 alias gri="git rebase --interactive"
 alias grc="git rebase --continue"
+alias grs="git reset --soft HEAD^"
+alias grsc="git commit -C HEAD@{1}" # -c to edit message
 
 alias gd="git diff"
 alias gdc="git diff --cached"
@@ -72,6 +74,8 @@ alias g-update-deleted="git ls-files -z --deleted | git update-index -z --remove
 alias gb="git branch"
 alias gba="git branch -a -v --color"
 
+# TODO check
+# alias gfr="git pull --rebase"
 alias gfr="git fetch && git rebase refs/remotes/origin/master"
 alias gci="git commit"
 alias gco="git checkout"
