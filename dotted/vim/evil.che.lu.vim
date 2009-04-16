@@ -127,14 +127,14 @@ function! FuzzyReIndex(dir)
   " and dir is:
   "   work/*/*
   "   src/*
-  if ((a:dir !~ 'work\/(archive)') && (a:dir =~ 'work\/\w\w*\/\w\w*' || a:dir =~ 'work\/\w\w*'))
+  if ((a:dir !~ 'work\/(archive)') && (a:dir =~ 'work\/\w\w*\/\w\w*' || a:dir =~ 'src\/\w\w*'))
     echo "reindexing " . a:dir
     FuzzyFinderTextMateRefreshFiles
   endif
 endfunction
 let g:CWD = ""
 function! Cd(cd)
-  exec "cd " . a:cd
+  exec 'cd ' . escape(a:cd, " ")
   let g:CWD = getcwd()
   return getcwd()
 endfunction

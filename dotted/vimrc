@@ -251,14 +251,14 @@ let g:template{'_'}{'lorem'}  = g:template{'_'}{'lorem0'}
 let g:template{'vim'}{'fun'} = "function! ()\<CR>endfunction\<Up>\<End>\<Left>\<Left>"
 
 " rails - erb
-let g:template{'_'}{'rr'}  = "<%  -%>\<Left>\<Left>\<Left>\<Left>"
-let g:template{'_'}{'ree'}  = "<%=  -%>\<Left>\<Left>\<Left>\<Left>"
-let g:template{'_'}{'rrr'} = "<%  %>\<Left>\<Left>\<Left>"
-let g:template{'_'}{'rre'} = "<%=  %>\<Left>\<Left>\<Left>"
+let g:template{'_'}{'rr'}  = "<%  %>\<Left>\<Left>\<Left>"
+let g:template{'_'}{'ree'}  = "<%=  %>\<Left>\<Left>\<Left>"
+" let g:template{'_'}{'rrr'} = "<%  -%>\<Left>\<Left>\<Left>"
+" let g:template{'_'}{'rre'} = "<%=  -%>\<Left>\<Left>\<Left>"
 let g:template{'_'}{'cc'} = "/*  */\<Left>\<Left>\<Left>"
 let g:template{'_'}{'hh'} = "<!--  -->\<Left>\<Left>\<Left>\<Left>"
-let g:template{'_'}{'le'} = "{{  }}\<Left>\<Left>\<Left>"
-let g:template{'_'}{'lll'} = "{%  %}\<Left>\<Left>\<Left>"
+" let g:template{'_'}{'le'} = "{{  }}\<Left>\<Left>\<Left>"
+" let g:template{'_'}{'lll'} = "{%  %}\<Left>\<Left>\<Left>"
 
 " rails rspec
 let g:template{'ruby'}{'rde'} = "describe \"\" do\n  \n\<BS>end\n\<Up>\<Up>\<Up>" . repeat("\<RIGHT>", 10)
@@ -312,6 +312,9 @@ let g:template{'sass'}{'tu'}  = "text-decoration: underline"
 let g:template{'sass'}{'tn'}  = "text-decoration: none"
 let g:template{'sass'}{'vm'}  = "vertical-align: middle"
 
+" js
+let g:template{'javascript'}{'eachf'}  = "each(function(){\n  \n\<BS>});\<Up>\<Up>\<End>\<Left>\<Left>"
+let g:template{'javascript'}{'funo'}  = "function(){\n  \n\<BS>}\<Up>\<Up>\<End>\<Left>\<Left>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""" IMAPs
