@@ -6,3 +6,24 @@ hardstatus alwayslastline
 hardstatus string "%-Lw %{= kG}Host: %{Y}%H%? %{c}(%1`) %{= kG} %-=Load: %{Y}%l%{kG}  %{= kG}Date: %{Y}%m/%d/%y%{= kG}  Time: %{Y}%C:%s%a%{= kG}%{W}" 
 caption always
 caption string "%-Lw%{= bw}%50>%n %t%{-}%+Lw%<" 
+
+# startup_message off
+# vbell off
+# defscrollback 10000
+# escape 
+# hardstatus alwayslastline
+# hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+# autodetach on
+# silencewait 15
+# msgwait 2                 # 1 second messages
+# term screen
+ 
+# shell zsh
+ 
+# # 256 color stuff
+# # allow bold colors
+# attrcolor b ".I"
+# # tell screen how to set colors. AB = background, AF=foreground
+# termcapinfo xterm-color "Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm"
+# # erase background with current bg color
+# defbce "on"

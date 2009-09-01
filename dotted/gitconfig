@@ -1,5 +1,5 @@
 [user]
-  ; name = Cristi Balan and Irina Dumitrascu
+  ; name = Cristi Balan & Irina Dumitrascu
   name = Cristi Balan
   email = evil@che.lu
 
@@ -14,8 +14,8 @@
   up = !git fetch origin && git rebase origin/`git branch | grep \"^*\" | cut -d\" \" -f2`
   pending = !git --no-pager log origin/master..master && echo
   ignored = "!git ls-files --others --exclude-standard"
-  lh = "!git log --pretty='format:%Cblue%h %Cred%ar %Cblue%an %Creset -- %s' | grep -i '\\[#[0-9]*'"
   retrack = '!retrack() { git config "branch.$1.remote" $(dirname "$2"); git config "branch.$1.merge" "refs/heads/$(basename "$2")"; }; retrack'
+  lol = log --pretty=oneline --abbrev-commit --graph --decorate
 
 ; [format]
   ; pretty = format:"%Cblue%ar%Creset\t%s"

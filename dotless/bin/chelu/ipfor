@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby  
+require 'resolv'  
+  
+unless ARGV.size == 1  
+  puts "-> Usage: ipfor <A href="http://www.rollstream.com">www.rollstream.com</A>"   
+  exit  
+end  
+  
+# only works on mac  
+def paste(str)  
+  %x[echo "#{str}" | pbcopy]  
+  puts "-> Pasted #{str} to your clipboard"   
+end  
+  
+begin  
+  paste(Resolv.getaddress(ARGV.first))  
+rescue Resolv::ResolvError  
+  puts "-> Could not resolve '#{ARGV.first}'"   
+end  

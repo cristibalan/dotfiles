@@ -1,0 +1,9 @@
+#!/bin/bash
+find content/_posts/*.textile -type f -exec sed -i "" -e "s/â€“/-/g" {} \;
+find content/_posts/*.textile -type f -exec sed -i "" -e "s/â€œ/\"/g" {} \;
+find content/_posts/*.textile -type f -exec sed -i "" -e "s/â€/\"/g" {} \;
+find content/_posts/*.textile -type f -exec sed -i "" -e "s/Ã¢/a/g" {} \;
+find content/_posts/*.textile -type f -exec sed -i "" -e "s/Äƒ/a/g" {} \;
+find content/_posts/*.textile -type f -exec sed -i "" -e "s/Ã®/i/g" {} \;
+find content/_posts/*.textile -type f -exec sed -i "" -e "s/Å£/t/g" {} \;
+find content/_posts/*.textile -type f -exec sed -i "" -e "s/ÅŸ/s/g" {} \;

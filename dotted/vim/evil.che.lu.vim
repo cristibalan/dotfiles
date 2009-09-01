@@ -92,6 +92,7 @@ endfunction
 
 function! BufEnter()
   call CdReset()
+  call GuiSizeSet(g:CURRENTSIZE)
 endfunction
 
 function! TabLeave()

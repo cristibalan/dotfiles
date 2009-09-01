@@ -1,13 +1,17 @@
-#export BRAID_USE_LOCAL_CACHE=yes
+set -o vi
+
+export BRAID_USE_LOCAL_CACHE=yes
 
 bind Space:magic-space
 
+export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/mysql/bin:$PATH
-export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:$PATH
+export PATH=/usr/local/git/bin:$PATH
+#export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
+# export PATH=~/work/projects/kicker/bin:$PATH
 export PATH=~/work/gems/braid/bin:$PATH
 export PATH=~/work/sdk/air/bin:$PATH
-export PATH=~/.gems/bin:$PATH
 export PATH=~/bin:$PATH
 export PATH=~/bin/chelu/ws:$PATH
 export PATH=~/bin/chelu:$PATH
@@ -19,6 +23,7 @@ export PATH=~/dotfiles:$PATH
 
 export CLASSPATH="/Users/chelu/classpath:/Users/chelu/classpath/js.jar:$CLASSPATH"
 
+export MANPATH=/opt/local/share/man:$MANPATH
 export MANPATH=~/man:$MANPATH
 export SUDOLESS=true
 export MERB_SUDO=
@@ -26,13 +31,18 @@ export MERB_SUDO=
 # in case git colors fuck up
 export LESS="-rX"
 
+# imagemagick
+export MAGICK_HOME="/Users/chelu/src/ImageMagick-6.5.3"
+export PATH="$MAGICK_HOME/bin:$PATH"
+export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib"
+
 . ~/bin/aliases
 
 # don't use gems as root
 #alias gemi='gem install --no-rdoc --no-ri -y'
 #alias gemi='gem install -y'
-export GEM_HOME="$HOME/.gem/ruby/1.8"
-export GEM_PATH="$GEM_HOME"
+# export GEM_HOME="$HOME/.gem/ruby/1.8"
+# export GEM_PATH="$GEM_HOME"
 
 export DISPLAY=:0.0
 export EDITOR=g

@@ -1,0 +1,2 @@
+#<A href="http://www.askdavetaylor.com/how_do_i_figure_out_my_ip_address_on_a_mac.html">http://www.askdavetaylor.com/how_do_i_figure_out_my_ip_address_on_a_mac.html</A>  
+ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2  

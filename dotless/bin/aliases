@@ -10,6 +10,7 @@ alias c="clear"
 alias l="ls -AGlFT"
 alias lt="ls -AGlFTtr"
 alias g?="grep -e $1"
+alias gem="sudo gem"
 #alias cd="cd && git status"
 
 # bash

@@ -509,6 +509,11 @@ map <leader>hl  :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '>
 "nmap <silent> cac xx<down>x<up><up>p<up>udw$d6hx
 
 call KeyMap('ni', 'CDLM', 'p',       ':TlistToggle<CR>')
-call KeyMap('n',  '',    'TT',       '::tabnew<CR>:e ~/todo/today.txt<CR>') " Toggle NERDTree
+call KeyMap('n',  '',    'TT',       '::tabnew<CR>:e ~/todo/today.txt<CR>')
+call KeyMap('n',  '',    'TR',       '::tabnew<CR>:e ~/work/projects/office/days_cristi.txt<CR>')
 
+nnoremap gb '[V']
 
+" sql beautifier
+" :%s/\(FROM\|LEFT\|RIGHT\|INNER\|WHERE\|GROUP\|ORDER\|LIMIT,\)/\r&
+" :%s/\(AND\|,\)/&\r

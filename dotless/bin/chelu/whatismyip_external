@@ -1,0 +1,3 @@
+# the script is being displayed in two lines. You should put  
+# them in one single line  
+curl -s <A href="http://checkip.dyndns.org">http://checkip.dyndns.org</A> | awk '{print $6}' | awk ' BEGIN { FS = "<" } { print $1 } '  

@@ -1,0 +1,91 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+
+class Externals
+  def initialize(repo=ARGV[0], svndir=ARGV[1])
+    @repo = repo
+    @dir = svndir || File.basename(@repo.gsub(/\/$/, "").gsub(/\/trunk$/, ""))
+    @svndir = "#{@dir}.svn"
+
+    if false
+    die("#{@dir} already exists") if File.exists?(@dir)
+
+    rev = exec("svn log -q --limit 1 #{@repo}")
+    rev = rev.split("\n")[1][/^r\d+\s/].gsub(/\s/, "")[1..-1]
+    # rev = rev.split(/\n/).find { |x| x.match /^r\d+/ }.split(" | ")[0][1..-1]
+    # rev = "1905"
+    echo "Remote revision: #{rev}"
+
+    echo "checking out with svn"
+    if File.exists?(@svndir)
+      exec "svn up #{@svndir}"
+    else
+      exec "svn co #{@repo} #{@svndir}"
+    end
+    FileUtils.mkdir @dir
+
+    echo "checking out with git svn"
+    FileUtils.cd(@dir) do
+      exec "git svn init #{@repo}"
+      exec "git svn fetch -r#{rev}"
+      exec "git reset --hard"
+    end
+    end
+
+    echo "externals"
+    exts = {}
+    FileUtils.cd(@svndir) do
+      exts.merge!(externals)
+      exts.merge!(externals("vendor"))
+      exts.merge!(externals("vendor/plugins"))
+    end
+    p externals.inspect
+    make_links(exts)
+
+    # FileUtils.cd(@dir) do
+      # exec "git add .gitignore"
+      # exec "git commit -m '.gitignore externals for git-svn'"
+    # end
+  end
+
+  def die(msg="", code=1)
+    puts "FAEL! #{msg}"
+    exit code
+  end
+
+  def echo(msg)
+    puts msg
+  end
+
+  def exec(cmd)
+    puts "exec: #{cmd}"
+    return `#{cmd}`
+  end
+
+  def externals(svndir = "")
+    result = {}
+    exts = exec "svn propget svn:externals #{svndir}"
+    exts.split("\n").each do |external|
+      data = external.match(/^([^\s]+)\s+(?:(?:-r|--revision)\s*(\d+)\s+)?(.+)$/)
+      case data.length
+      when 4
+        subdir, rev, url = data[1], data[2].nil? ? :head : data[2].to_i, data[3]
+      else
+        raise SyntaxError, "Could not parse svn:externals on #{svndir}: #{external}"
+      end
+
+      result[File.join(svndir, subdir)] = {:revision => rev, :url => url}
+    end
+    result
+  end
+
+  def make_links(externals)
+    exec "echo >> #{File.join(@dir, ".gitignore")}"
+    externals.each do |dir, exts|
+      exec "ln -s #{File.expand_path(File.join(@dir + ".svn", dir))} #{File.expand_path(File.join(@dir, dir))}"
+      exec "echo #{dir} >> #{File.join(@dir, ".gitignore")}"
+    end
+  end
+end
+
+Externals.new
