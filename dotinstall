@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# dotinstall
 home = File.expand_path(ENV['HOME'])
 
 
