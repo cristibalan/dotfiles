@@ -34,10 +34,12 @@ files.each do |file|
     if dryrun || debug
       puts "mkdir -p #{File.dirname(target)}"
       puts "mv #{file} #{target}"
+      puts "ln -s -f -v #{target} #{File.expand_path file}"
     end
     unless dryrun
       `mkdir -p "#{File.dirname(target)}"`
       `mv "#{file}" "#{target}"`
+      `ln -s -f -v "#{target}" "#{File.expand_path file}"`
     end
   else
     if dryrun || debug
