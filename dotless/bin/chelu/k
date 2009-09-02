@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Initial run: ruby \"$1\""
+ruby "$1"
+kicker --execute "ruby \"$1\""
