@@ -14,7 +14,7 @@ if has("macunix") && has("gui_running") && system('ps xw | grep -c "[V]im -psn"'
 endif
 
 " make ~/.vim work on windows and ~/vimfiles on *nix
-set runtimepath=$HOME/.vim,$HOME/vimfiles,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after,$HOME/vimfiles/after
+set runtimepath=$HOME/.vim,$HOME/vimfiles,$HOME/.vim/evilchelu/fuf,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after,$HOME/vimfiles/after
 set directory=$HOME/tmp/vim,$HOME/tmp,/var/tmp,/tmp,c:\\windows\\temp,$TMP,$TEMP
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -129,15 +129,12 @@ let g:netrw_browsex_viewer="open"
 call CHELU_spaces()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""" FuzzyFinder & FuzzyFinderTextMate settings
+"""""""""" Fizzy
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{}}
-let g:FuzzyFinderOptions.Base.key_open_tab = '<CR>'
-let g:FuzzyFinderOptions.Base.key_open = '<C-]>'
-let g:FuzzyFinderOptions.Base.enumerating_limit = 30
-let g:fuzzy_matching_limit = 10000
-let g:fuzzy_path_display = 'relative_path'
-let g:fuzzy_ignore = "*.log,tmp/*,vendor/*,public/p/*,public/assets/*,import/*,import_images/*,db/sphinx/*,doc/*"
+let g:fuf_modes = ['fizzy', 'buffer', 'dir', 'tag']
+                  " 'givenfile', 'givendir', 'givencmd','callbackfile', 'callbackitem'
+" let g:fuzzy_ignore = "*.log,tmp/*,vendor/*,public/a/*,public/p/*,public/assets/*,import/*,import_images/*,db/sphinx/*,doc/*"
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""" snippetsEmu settings
@@ -149,7 +146,7 @@ let g:fuzzy_ignore = "*.log,tmp/*,vendor/*,public/p/*,public/assets/*,import/*,i
 """""""""" taglist settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 runtime taglist.vim
-let Tlist_Ctags_Cmd = "/opt/local/bin/ctags"
+" let Tlist_Ctags_Cmd = "ctags"
 let Tlist_Compact_Format = 1
 let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Use_Right_Window = 1
@@ -409,8 +406,8 @@ call KeyMap('ni', 'D',    '<M-Right>', ':call MoveTabRight()<CR>')
 call KeyMap('ni', 'DLM',  's',       ':up<CR>')
 call KeyMap('ni', 'DLM',  'w',       ':bw<CR>')
 call KeyMap('ni', 'DLM',  'b',       ':tab ball<CR>')
-call KeyMap('ni', 'DLM',  'r',       ':FuzzyFinderTextMate<CR>')
-call KeyMap('ni', 'DLM',  'R',       ':FuzzyFinderDir<CR>')
+call KeyMap('ni', 'DLM',  'r',       ':tabnew<CR>:FufFizzy<CR>')
+call KeyMap('ni', 'DLM',  'R',       ':tabnew<CR>:FufDir<CR>')
 
 """""""""" selections
 call KeyMap('n',  'DM',  'a' ,      'ggVG')
@@ -445,7 +442,7 @@ call KeyMap('ni', '',     '<Home>',  ':call HomeKey()<CR>')
 call KeyMap('n',  'CDLM', '-',       ':call CwdUp()<CR>')
 call KeyMap('n',  'CDLM', '=',       ':call CwdDown()<CR>')
 call KeyMap('n',  'CDLM', '0',       ':call CwdCurrent()<CR>')
-call KeyMap('n',  'CDLM', '\',       ':call FuzzyReIndexCwd()<CR>')
+call KeyMap('n',  'CDLM', '\',       ':call FizzyReIndexCwd()<CR>')
 
 """""""""" <3 _
 " helpers to use _ like a word boundary

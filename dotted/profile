@@ -32,7 +32,7 @@ export MERB_SUDO=
 export LESS="-rX"
 
 # imagemagick
-export MAGICK_HOME="/Users/chelu/src/ImageMagick-6.5.3"
+export MAGICK_HOME="/opt/imagemagick"
 export PATH="$MAGICK_HOME/bin:$PATH"
 export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib"
 
@@ -53,9 +53,6 @@ export INPUTRC=~/.inputrc
 
 export HISTSIZE=1000000
 shopt -s histappend
-
-# have git-svn working with just port install git-core, without +svn
-export PERL5LIB=/usr/local/svn/perl:/usr/local/svn/perl/darwin-thread-multi-2level
 
 # hack && ship
 function current_git_branch {

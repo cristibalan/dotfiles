@@ -119,18 +119,13 @@ function! CreateNewFile(newfile)
   exec "e " . crtbufdir . "/" . a:newfile
 endfunction
 
-function! FuzzyReIndexCwd()
-  call FuzzyReIndex(getcwd())
+function! FizzyReIndexCwd()
+  call FizzyReIndex(getcwd())
 endfunction
-function! FuzzyReIndex(dir)
-  " dir is not:
-  "   work/archive
-  " and dir is:
-  "   work/*/*
-  "   src/*
-  if ((a:dir !~ 'work\/(archive)') && (a:dir =~ 'work\/\w\w*\/\w\w*' || a:dir =~ 'src\/\w\w*'))
+function! FizzyReIndex(dir)
+  if (a:dir =~ 'work\/projects\/\w\w*')
     echo "reindexing " . a:dir
-    FuzzyFinderTextMateRefreshFiles
+    FizzyRenewCache
   endif
 endfunction
 let g:CWD = ""
@@ -165,7 +160,7 @@ endfunction
 
 function! CwdCurrent()
   call Cd(GetCwdCurrent())
-  call FuzzyReIndexCwd()
+  call FizzyReIndexCwd()
 endfunction
 
 function! CwdUp()

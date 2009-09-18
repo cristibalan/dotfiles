@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "NOT WORKING YET"
+exit 1
+ack -l -m 1 --nopager $1 | xargs -t -n 1 sed -i '' -e 's/$1/$2/g'
+fack $1 | EDITOR=v vidir -

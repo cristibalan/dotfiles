@@ -1,6 +1,7 @@
 #tmp
 alias pls="punch log symbolya"
 alias ack="ack -i -a"
+alias vidir="EDITOR=v vidir"
 
 # common
 alias vi="v"

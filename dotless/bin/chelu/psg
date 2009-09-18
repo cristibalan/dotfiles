@@ -1,0 +1,2 @@
+#!/bin/sh
+ps wwwaux | grep $1 | grep -v grep

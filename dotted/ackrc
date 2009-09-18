@@ -3,6 +3,10 @@
 --break
 --color
 
+# ignores
+--ignore-dir=log
+--ignore-dir=tmp
+
 # extra file types
 --type-add
 ruby=.rake

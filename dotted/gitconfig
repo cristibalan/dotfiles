@@ -16,6 +16,7 @@
   ignored = "!git ls-files --others --exclude-standard"
   retrack = '!retrack() { git config "branch.$1.remote" $(dirname "$2"); git config "branch.$1.merge" "refs/heads/$(basename "$2")"; }; retrack'
   lol = log --pretty=oneline --abbrev-commit --graph --decorate
+  unadd = "reset HEAD"
 
 ; [format]
   ; pretty = format:"%Cblue%ar%Creset\t%s"
@@ -43,3 +44,6 @@
 # *.rb diff=ruby
 [diff "ruby"]
   funcname = ^ *\\(\\(class\\|module\\|def\\) .*\\)
+
+[github]
+  user = evilchelu
