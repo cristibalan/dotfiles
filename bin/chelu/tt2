@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+# usage:
+# tt "test/controllers/user/*.rb"
+# tt test/models/comic_test.rb models
+# tt test/models/comic_test.rb -l 20 models
+
+files = ARGV.shift
+dir = ARGV.pop
+
+if dir.nil?
+  dir = ""
+else
+  if %w(controllers helpers models views).include? dir
+    dir += "/"
+    case dir
+      when "models"
+        moredirs = "test/unit/**/*.rb"
+      when "controllers"
+        moredirs = "test/functional/**/*.rb"
+    end
+  else
+    ARGV.push dir
+    dir = ""
+  end
+end
+
+action = "ruby #{files} #{ARGV.join(" ")}"
+cmd = %(rstakeout.rb "#{action}" "lib/**/*.rb" "app/#{dir}**/*.rb" "test/factories/**/*.rb" "test/#{dir}**/*.rb" #{moredirs} "slices/*/app/#{dir}**/*.rb")
+
+system(cmd)
+
