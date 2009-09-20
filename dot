@@ -1,0 +1,147 @@
+#!/usr/bin/env ruby
+# dotcheck
+
+require 'pathname'
+require 'fileutils'
+
+$DEBUG = false
+$DRYRUN = true
+
+$ADD_MISSING = !ARGV.find{|x| x == '--ignore-missing'}
+$REMOVE_BROKEN = ARGV.find{|x| x == '--remove-broken'}
+
+$HOME = File.expand_path(ENV['HOME'])
+$DOTFILES = File.expand_path(File.dirname(__FILE__))
+
+def exec(cmds, force=nil)
+  cmds = [cmds] if cmds.is_a? String
+  cmds.each do |cmd|
+    puts cmd if $DRYRUN || $DEBUG
+    # `#{cmd}` if force || !$DRYRUN
+  end
+end
+
+class String
+  def in_home
+    File.join($HOME, self)
+  end
+
+  def in_git
+    File.join($DOTFILES, self)
+  end
+
+  def real
+    Pathname.new(self).readlink.to_s
+  end
+end
+
+IGNORES = File.readlines(File.join($DOTFILES, ".ignores")).map do |ignore|
+  File.join(ignore.chomp)
+end
+
+files = []
+
+# all tracked files
+cmd = 'find -d . -type f ! -path "*.git/*" ! -path "./dot*" | grep -v -e "\.$" | sed -e "s/^\.\///"'
+files = `#{cmd}`
+cmd = 'find ~/.* -type f -maxdepth 0 | grep -v "\.$" | grep -v -e "\.$" | sed -e "s/.*\///"'
+files << `#{cmd}`
+
+# all tracked dirs
+cmd = 'find -d . -type d -maxdepth 1 ! -path "*.git/*" | grep -v -e "\.$" | sed -e "s/^\.\///"'
+dirs = `#{cmd}`.split("\n")
+
+# all possibly untracked files
+dirs.each do |dir|
+  next if IGNORES.find{ |i| i[-1,1] == "/" ? "#{dir}/".index(i) == 0 : "#{dir}/" == i}
+
+  cmd = 'find -d ~/' + dir + ' -type f -o -type l ! -path "*.git*" | grep -v -e "\.$" | sed -e "s/^'+$HOME.gsub("/", '\\/')+'\///"'
+  files << `#{cmd}`
+end
+
+fixable_links = []
+broken_links = []
+other_links = []
+conflict_files = []
+untracked_files = []
+uninstalled_files = []
+
+files.split("\n").uniq.each do |file|
+  next if IGNORES.find{ |i| i[-1,1] == "/" ? file.index(i) == 0 : file == i}
+  next if file =~ /.DS_Store/
+
+  cmds = []
+  case
+  when File.symlink?(file.in_home)
+    if file.in_home.real == file.in_git
+      unless File.exists? file.in_git
+        broken_links << file
+      end
+    else
+      if File.exists? file.in_git
+        fixable_links << file
+      else
+        if file.in_home.real.index($DOTFILES) == 0 || file.in_home.real.index("dotfiles")
+          broken_links << file
+        else
+          other_links << file
+        end
+      end
+    end
+  when File.file?(file.in_home)
+    if File.exists?(file.in_git)
+      conflict_files << file
+    else
+      untracked_files << file
+    end
+  when !File.exists?(file.in_home)
+    uninstalled_files << file
+  when File.directory?(file.in_home)
+  end
+end
+
+puts "***** fixable links: #{fixable_links.length}"
+fixable_links.each do |file|
+  exec "ln -s -f -v '#{file.in_git}' '#{file.in_home}'", true
+end
+
+puts "***** broken links: #{broken_links.length}"
+broken_links.each do |file|
+  if $REMOVE_BROKEN
+    exec "rm '#{file.in_home}'"
+  else
+    exec "echo '#{file.in_home}'"
+  end
+end
+
+puts "***** other links: #{other_links.length}"
+other_links.each do |file|
+  exec "echo '#{file.in_home}'@ -\\> '#{file.in_home.real}'"
+end
+
+puts "***** conflict files: #{conflict_files.length}"
+conflict_files.each do |file|
+  exec "echo '!#{file.in_home}'"
+end
+
+puts "***** untracked files: #{untracked_files.length}"
+untracked_files.each do |file|
+  if $ADD_MISSING
+    cmds = []
+    cmds << "mkdir -p '#{File.dirname(file.in_git)}'"
+    cmds << "mv '#{file.in_home}' '#{file.in_git}'"
+    cmds << "ln -s -f -v '#{file.in_git}' '#{file.in_home}'"
+  else
+    cmds = "echo '#{file}' >> #{$DOTFILES}/.ignores"
+  end
+  exec cmds
+end
+
+puts "***** uninstalled files: #{uninstalled_files.length}"
+uninstalled_files.each do |file|
+  cmds = []
+  cmds << "mkdir -p '#{File.dirname(file.in_home)}'"
+  cmds << "ln -s -f -v '#{file.in_git}' '#{file.in_home}'"
+  exec cmds
+end
+
