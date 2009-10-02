@@ -1,4 +1,8 @@
 #!/usr/bin/env ruby
+# Usage: gsclone https://blah/bluh/trunk
+# Creates bluh.svn to be used for working with externals and deleting directories
+# Creates bluh and symlinks the externals from bluh.svn (only from vendor and vendor/plugins)
+
 require 'fileutils'
 
 class Externals
