@@ -47,7 +47,7 @@ alias ttop='top -ocpu -R -F -s 2 -n30'
 # git svn
 alias gs="git svn"
 alias gsr="git svn rebase"
-alias gsd="git svn dcommit"
+alias gsd="rake && git svn dcommit"
 
 # git
 # alias has="hack && rake && ship"
