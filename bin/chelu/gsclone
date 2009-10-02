@@ -7,7 +7,6 @@ class Externals
     @dir = svndir || File.basename(@repo.gsub(/\/$/, "").gsub(/\/trunk$/, ""))
     @svndir = "#{@dir}.svn"
 
-    if false
     die("#{@dir} already exists") if File.exists?(@dir)
 
     rev = exec("svn log -q --limit 1 #{@repo}")
@@ -29,7 +28,6 @@ class Externals
       exec "git svn init #{@repo}"
       exec "git svn fetch -r#{rev}"
       exec "git reset --hard"
-    end
     end
 
     echo "externals"
