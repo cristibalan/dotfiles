@@ -39,6 +39,8 @@ IGNORES = File.readlines(File.join($DOTFILES, ".ignores")).map do |ignore|
   File.join(ignore.chomp)
 end
 
+FileUtils.cd $DOTFILES
+
 files = []
 
 # all tracked files
