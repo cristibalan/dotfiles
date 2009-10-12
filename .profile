@@ -48,7 +48,7 @@ export DISPLAY=:0.0
 export EDITOR=g
 export GIT_EDITOR=gw
 export PAGER=less
-export VIM_APP_DIR=/Applications
+export VIM_APP_DIR=~/Apps/must\ have
 export INPUTRC=~/.inputrc
 
 export HISTSIZE=1000000

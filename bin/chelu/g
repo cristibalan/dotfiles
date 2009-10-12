@@ -1,2 +1,2 @@
 #!/bin/bash
-~/Apps/must\ have/MacVim.app/Contents/MacOS/Vim -g -u ~/.vimrc -U ~/.gvimrc --servername CHELU --remote-tab-silent $*
+~/Apps/must-have/MacVim.app/Contents/MacOS/Vim -g -u ~/.vimrc -U ~/.gvimrc --servername CHELU --remote-tab-silent $*
