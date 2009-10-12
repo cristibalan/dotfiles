@@ -1,2 +1,2 @@
 #!/bin/bash
-/Applications/MacVim.app/Contents/MacOS/Vim -u ~/.vimrc $*
+~/Apps/must\ have/MacVim.app/Contents/MacOS/Vim -u ~/.vimrc $*
