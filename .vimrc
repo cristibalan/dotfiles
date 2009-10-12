@@ -131,8 +131,8 @@ call CHELU_spaces()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""" Fizzy
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:fuf_modes = ['fizzy', 'buffer', 'dir', 'tag']
-                  " 'givenfile', 'givendir', 'givencmd','callbackfile', 'callbackitem'
+let g:fuf_modes = ['fizzyfile', 'fizzydir', 'buffer', 'tag']
+                  " 'file, 'dir', 'givenfile', 'givendir', 'givencmd','callbackfile', 'callbackitem'
 " let g:fuzzy_ignore = "*.log,tmp/*,vendor/*,public/a/*,public/p/*,public/assets/*,import/*,import_images/*,db/sphinx/*,doc/*"
 
 
@@ -406,8 +406,8 @@ call KeyMap('ni', 'D',    '<M-Right>', ':call MoveTabRight()<CR>')
 call KeyMap('ni', 'DLM',  's',       ':up<CR>')
 call KeyMap('ni', 'DLM',  'w',       ':bw<CR>')
 call KeyMap('ni', 'DLM',  'b',       ':tab ball<CR>')
-call KeyMap('ni', 'DLM',  'r',       ':tabnew<CR>:FufFizzy<CR>')
-call KeyMap('ni', 'DLM',  'R',       ':tabnew<CR>:FufDir<CR>')
+call KeyMap('ni', 'DLM',  'r',       ':tabnew<CR>:FufFizzyFile<CR>')
+call KeyMap('ni', 'DLM',  'R',       ':tabnew<CR>:FufFizzyDir<CR>')
 
 """""""""" selections
 call KeyMap('n',  'DM',  'a' ,      'ggVG')
