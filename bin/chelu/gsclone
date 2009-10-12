@@ -31,6 +31,7 @@ class Externals
     FileUtils.cd(@dir) do
       exec "git svn init #{@repo}"
       exec "git svn fetch -r#{rev}"
+      exec "git config gc.auto 0"
       exec "git reset --hard"
     end
 
