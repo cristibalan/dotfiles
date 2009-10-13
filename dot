@@ -69,7 +69,7 @@ untracked_files = []
 uninstalled_files = []
 
 files.split("\n").uniq.each do |file|
-  next if IGNORES.find{ |i| i[-1,1] == "/" ? file.index(i) == 0 : file == i}
+  next if IGNORES.find{ |i| i[-1,1] == "/" ? file.index(i) == 0 : (file == i || File.basename(file) == i)}
   next if file =~ /.DS_Store/
 
   cmds = []
