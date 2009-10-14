@@ -2,6 +2,17 @@
 # Usage: gsclone https://blah/bluh/trunk
 # Creates bluh.svn to be used for working with externals and deleting directories
 # Creates bluh and symlinks the externals from bluh.svn (only from vendor and vendor/plugins)
+#
+# Subsequent runs updates the clone
+#   svn up
+#   git svn rebase
+#   resymlink (particularly handy when you're moving directories around)
+#
+# ISSUES
+#   * doesn't remove deleted externals, probably never will
+#
+# TODO
+#   * don't add duplicates to .gitignore
 
 require 'fileutils'
 
@@ -11,28 +22,29 @@ class Externals
     @dir = svndir || File.basename(@repo.gsub(/\/$/, "").gsub(/\/trunk$/, ""))
     @svndir = "#{@dir}.svn"
 
-    die("#{@dir} already exists") if File.exists?(@dir)
-
-    rev = exec("svn log -q --limit 1 #{@repo}")
-    rev = rev.split("\n")[1][/^r\d+\s/].gsub(/\s/, "")[1..-1]
-    # rev = rev.split(/\n/).find { |x| x.match /^r\d+/ }.split(" | ")[0][1..-1]
-    # rev = "1905"
-    echo "Remote revision: #{rev}"
-
     echo "checking out with svn"
     if File.exists?(@svndir)
       exec "svn up #{@svndir}"
     else
       exec "svn co #{@repo} #{@svndir}"
     end
-    FileUtils.mkdir @dir
 
     echo "checking out with git svn"
-    FileUtils.cd(@dir) do
-      exec "git svn init #{@repo}"
-      exec "git svn fetch -r#{rev}"
-      exec "git config gc.auto 0"
-      exec "git reset --hard"
+    if File.exists?(@dir)
+      FileUtils.cd(@dir) do
+        exec "git svn rebase"
+      end
+    else
+      FileUtils.mkdir @dir
+      FileUtils.cd(@dir) do
+        rev = exec("svn log -q --limit 1 #{@repo}")
+        rev = rev.split("\n")[1][/^r\d+\s/].gsub(/\s/, "")[1..-1]
+
+        exec "git svn init #{@repo}"
+        exec "git svn fetch -r#{rev}"
+        exec "git config gc.auto 0"
+        exec "git reset --hard"
+      end
     end
 
     echo "externals"
@@ -85,7 +97,7 @@ class Externals
   def make_links(externals)
     exec "echo >> #{File.join(@dir, ".gitignore")}"
     externals.each do |dir, exts|
-      exec "ln -s #{File.expand_path(File.join(@dir + ".svn", dir))} #{File.expand_path(File.join(@dir, dir))}"
+      exec "ln -sf #{File.expand_path(File.join(@dir + ".svn", dir))} #{File.expand_path(File.join(@dir, dir))}"
       exec "echo #{dir} >> #{File.join(@dir, ".gitignore")}"
     end
   end
