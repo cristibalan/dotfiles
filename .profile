@@ -1,5 +1,3 @@
-set -o vi
-
 export BRAID_USE_LOCAL_CACHE=yes
 
 bind Space:magic-space
