@@ -1,14 +1,40 @@
 #!/usr/bin/env ruby
-# dotcheck
+
+# TODO
+#   * allow reverse switches
+#   * remove horrible duplications
+#   * add switch to only list files, not whole commands
+#   * add switch to limit action to just a subsection of the tracked dotfiles
 
 require 'pathname'
 require 'fileutils'
 
 
-$ADD_MISSING = !ARGV.find{|x| x == '--ignore-missing'}
+$ADD_MISSING   = !ARGV.find{|x| x == '--ignore-missing'}
 $REMOVE_BROKEN = ARGV.find{|x| x == '--remove-broken'}
-$DRYRUN = !ARGV.find{|x| x == '--run'}
-$DEBUG = !ARGV.find{|x| x == '--quiet'}
+$DRYRUN        = !ARGV.find{|x| x == '--run'}
+$DEBUG         = !ARGV.find{|x| x == '--quiet'}
+$ALL           = ARGV.find{|x| x == '--all'}
+
+if $ALL
+  $OPTIONS = {
+    :fixable_links     => true,
+    :broken_links      => true,
+    :other_links       => true,
+    :conflict_files    => true,
+    :untracked_files   => true,
+    :uninstalled_files => true
+  }
+else
+  $OPTIONS = {
+    :fixable_links     => ARGV.find{|x| x == '--fixable_links'},
+    :broken_links      => ARGV.find{|x| x == '--broken_links'},
+    :other_links       => ARGV.find{|x| x == '--other_links'},
+    :conflict_files    => ARGV.find{|x| x == '--conflict_files'},
+    :untracked_files   => ARGV.find{|x| x == '--untracked_files'},
+    :uninstalled_files => ARGV.find{|x| x == '--uninstalled_files'}
+  }
+end
 
 $HOME = File.expand_path(ENV['HOME'])
 $DOTFILES = File.expand_path(File.dirname(__FILE__))
@@ -104,48 +130,59 @@ files.split("\n").uniq.each do |file|
   end
 end
 
-puts "***** fixable links: #{fixable_links.length}"
-fixable_links.each do |file|
-  exec "ln -s -f -v '#{file.in_git}' '#{file.in_home}'", true
-end
-
-puts "***** broken links: #{broken_links.length}"
-broken_links.each do |file|
-  if $REMOVE_BROKEN
-    exec "rm '#{file.in_home}'"
-  else
-    exec "echo '#{file.in_home}'"
+if $OPTIONS[:fixable_links]
+  puts "***** fixable links: #{fixable_links.length}"
+  fixable_links.each do |file|
+    exec "ln -s -f -v '#{file.in_git}' '#{file.in_home}'", true
   end
 end
 
-puts "***** other links: #{other_links.length}"
-other_links.each do |file|
-  exec "echo '#{file.in_home}'@ -\\> '#{file.in_home.real}'"
+if $OPTIONS[:broken_links]
+  puts "***** broken links: #{broken_links.length}"
+  broken_links.each do |file|
+    if $REMOVE_BROKEN
+      exec "rm '#{file.in_home}'"
+    else
+      exec "echo '#{file.in_home}'"
+    end
+  end
 end
 
-puts "***** conflict files: #{conflict_files.length}"
-conflict_files.each do |file|
-  exec "echo '!#{file.in_home}'"
+if $OPTIONS[:broken_links]
+  puts "***** other links: #{other_links.length}"
+  other_links.each do |file|
+    exec "echo '#{file.in_home}'@ -\\> '#{file.in_home.real}'"
+  end
 end
 
-puts "***** untracked files: #{untracked_files.length}"
-untracked_files.each do |file|
-  if $ADD_MISSING
+if $OPTIONS[:conflict_files]
+  puts "***** conflict files: #{conflict_files.length}"
+  conflict_files.each do |file|
+    exec "echo '!#{file.in_home}'"
+  end
+end
+
+if $OPTIONS[:untracked_files]
+  puts "***** untracked files: #{untracked_files.length}"
+  untracked_files.each do |file|
+    if $ADD_MISSING
+      cmds = []
+      cmds << "mkdir -p '#{File.dirname(file.in_git)}'"
+      cmds << "mv '#{file.in_home}' '#{file.in_git}'"
+      cmds << "ln -s -f -v '#{file.in_git}' '#{file.in_home}'"
+    else
+      cmds = "echo '#{file}' >> #{$DOTFILES}/.ignores"
+    end
+    exec cmds
+  end
+end
+
+if $OPTIONS[:uninstalled_files]
+  puts "***** uninstalled files: #{uninstalled_files.length}"
+  uninstalled_files.each do |file|
     cmds = []
-    cmds << "mkdir -p '#{File.dirname(file.in_git)}'"
-    cmds << "mv '#{file.in_home}' '#{file.in_git}'"
+    cmds << "mkdir -p '#{File.dirname(file.in_home)}'"
     cmds << "ln -s -f -v '#{file.in_git}' '#{file.in_home}'"
-  else
-    cmds = "echo '#{file}' >> #{$DOTFILES}/.ignores"
+    exec cmds
   end
-  exec cmds
 end
-
-puts "***** uninstalled files: #{uninstalled_files.length}"
-uninstalled_files.each do |file|
-  cmds = []
-  cmds << "mkdir -p '#{File.dirname(file.in_home)}'"
-  cmds << "ln -s -f -v '#{file.in_git}' '#{file.in_home}'"
-  exec cmds
-end
-
