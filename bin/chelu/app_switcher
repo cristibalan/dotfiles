@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require 'pp'
+
+require 'rubygems'
+require 'appscript'
+include Appscript
+
+
+gets
+apps = app("System Events").application_processes.get[15].windows.get
+windows = app("System Events").application_processes.windows.get.find_all{|w| !w.empty?}
+
+pp windows
+
