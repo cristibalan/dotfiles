@@ -85,7 +85,7 @@ dirs = `#{cmd}`.split("\n")
 dirs.each do |dir|
   next if IGNORES.find{ |i| i[-1,1] == "/" ? "#{dir}/".index(i) == 0 : "#{dir}/" == i}
 
-  cmd = 'find -d ~/' + dir + ' -type f -o -type l ! -path "*.git*" | grep -v -e "\.$" | sed -e "s/^'+$HOME.gsub("/", '\\/')+'\///"'
+  cmd = 'find -d ~/' + dir + ' -type f -o -type l | grep -v -e "\.$" | sed -e "s/^'+$HOME.gsub("/", '\\/')+'\///"'
   files << `#{cmd}`
 end
 
