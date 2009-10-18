@@ -46,6 +46,8 @@ files = []
 # all tracked files
 cmd = 'find -d . -type f ! -path "*.git/*" ! -path "./dot*" | grep -v -e "\.$" | sed -e "s/^\.\///"'
 files = `#{cmd}`
+
+# all files (not dirs) ~/.*
 cmd = 'find ~/.* -type f -maxdepth 0 | grep -v "\.$" | grep -v -e "\.$" | sed -e "s/.*\///"'
 files << `#{cmd}`
 
@@ -53,7 +55,7 @@ files << `#{cmd}`
 cmd = 'find -d . -type d -maxdepth 1 ! -path "*/.git" | grep -v -e "\.$" | sed -e "s/^\.\///"'
 dirs = `#{cmd}`.split("\n")
 
-# all possibly untracked files
+# all possibly untracked files (all files in tracked directories)
 dirs.each do |dir|
   next if IGNORES.find{ |i| i[-1,1] == "/" ? "#{dir}/".index(i) == 0 : "#{dir}/" == i}
 
