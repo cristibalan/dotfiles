@@ -26,6 +26,7 @@ set runtimepath+=$HOME/.vim/fuf-fizzy
 set runtimepath+=$HOME/.vim/NERD_commenter
 set runtimepath+=$HOME/.vim/matchit
 set runtimepath+=$HOME/.vim/surround
+set runtimepath+=$HOME/.vim/snipMate
 
 set runtimepath+=$HOME/.vim/ruby
 
@@ -44,6 +45,8 @@ set runtimepath+=$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
 " user after paths
 " set runtimepath+=one for each plugin
 set runtimepath+=$HOME/.vim/vimfiles/after
+
+set runtimepath+=$HOME/.vim/snipMate/after
 
 " disable some built in plugins to avoid the kitchen sink effect :p
 let g:loaded_matchparen = 1       " disable matching of braces when moving around, it's too slow
