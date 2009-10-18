@@ -4,11 +4,11 @@
 require 'pathname'
 require 'fileutils'
 
-$DEBUG = false
-$DRYRUN = true
 
 $ADD_MISSING = !ARGV.find{|x| x == '--ignore-missing'}
 $REMOVE_BROKEN = ARGV.find{|x| x == '--remove-broken'}
+$DRYRUN = !ARGV.find{|x| x == '--run'}
+$DEBUG = !ARGV.find{|x| x == '--quiet'}
 
 $HOME = File.expand_path(ENV['HOME'])
 $DOTFILES = File.expand_path(File.dirname(__FILE__))
@@ -16,8 +16,8 @@ $DOTFILES = File.expand_path(File.dirname(__FILE__))
 def exec(cmds, force=nil)
   cmds = [cmds] if cmds.is_a? String
   cmds.each do |cmd|
-    puts cmd if $DRYRUN || $DEBUG
-    # `#{cmd}` if force || !$DRYRUN
+    puts cmd if $DEBUG
+    `#{cmd}` if force || !$DRYRUN
   end
 end
 
