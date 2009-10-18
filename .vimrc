@@ -75,7 +75,6 @@ set nocompatible
 " no menus! if this doesn't work, put it in after/menu.vim. or try to run $VIMRUNTIME/delmenu.vim often
 let did_install_default_menus=1 " pretend that menus are already loaded
 let did_install_syntax_menu=1   " pretend that the syntax menu was already loaded
-set guioptions-=m               " hide menubar
 " remove all menus
 aunmenu *
 set langmenu=none               " always use english menus at least
@@ -84,9 +83,6 @@ set langmenu=none               " always use english menus at least
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""" Basic settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax enable
-filetype plugin indent on
-" filetype plugin on
 set ffs=unix,dos,mac          " prefer unix line endings
 
 """""""""" general
@@ -125,7 +121,7 @@ set iskeyword=@,48-57,128-167,224-235,_  "default: @,48-57,_,192-255
 set listchars=tab:>.,trail:.,extends:>,precedes:<,eol:$
 
 """""""""" visual
-set guioptions=AceimMgrb      " NEVER EVER put ''a in here
+set guioptions=AceiMgrb       " NEVER EVER put ''a in here
 set number                    " show line numbers
 set laststatus=2              " always show status line
 set scrolloff=4               " minlines to show around cursor
@@ -168,6 +164,9 @@ set hidden
 set splitbelow                " split windows below current one
 set title
 
+syntax enable
+filetype plugin indent on
+" filetype plugin on
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -192,6 +191,7 @@ set indentexpr=
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""" Plugin settings
@@ -233,22 +233,16 @@ let NERDTreeWinSize = 60
 " let g:allml_global_maps = 1
 
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""" autocmds
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd GUIEnter    * set fullscreen
 
-"au! BufWritePre * :%s/\s\+$//e
+" remove all buffers on exit so we don't have them as hidden on reopen
+autocmd VimLeavePre * 1,255bwipeout
 
-"autocmd BufNewFile,BufReadPre * call CHELU_spaces()
-" autocmd GUIEnter              * call GuiEnter()
-" autocmd BufEnter              * call BufEnter()
-" autocmd TabLeave              * call TabLeave()
-if has("macunix")
-  "autocmd BufLeave             * call TabLeave()
-endif
-" autocmd VimLeavePre           * call VimLeave()
-
+" remove empty or otherwise dead buffers when moving away from them
+autocmd TabLeave    * call OnTabLeave()
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -273,8 +267,8 @@ let maplocalleader = "|"
 
 """""""""" macvim
 if has("gui_macvim")
-  " let macvim_skip_cmd_opt_movement = 1
-  " let macvim_hig_shift_movement = 1
+  let macvim_skip_cmd_opt_movement = 1
+  let macvim_hig_shift_movement = 0
 endif
 
 """""""""" disable middle mouse button pasting
@@ -293,13 +287,14 @@ imap  <4-MiddleMouse>  <Nop>
 """""""""" MAPPINGS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""" shortcuts
-call KeyMap('n',  '',    'TT',       '::tabnew<CR>:e ~/todo/today.txt<CR>')
+call KeyMap('ni', 'M', '<F11>', ':set fullscreen!<CR>')
+call KeyMap('n',  '',    'TT',       ':call Tabnew()<CR>:e ~/todo/today.txt<CR>')
 " call KeyMap('ni', 'CDLM', 'p',       ':TlistToggle<CR>')
 
 """""""""" font size
-call KeyMap('n', 'L', 'k',   ':call GuiSizeNext()<CR>')
-call KeyMap('n', 'L', 'K',   ':call GuiSizePrev()<CR>')
-call KeyMap('n', 'M', 'F11', ':call ToggleFullSCreen()<CR>')
+" call KeyMap('n', 'L', 'k',   ':call GuiSizeNext()<CR>')
+" call KeyMap('n', 'L', 'K',   ':call GuiSizePrev()<CR>')
+" call KeyMap('n', 'M', 'F11', ':call ToggleFullSCreen()<CR>')
 
 """""""""" tabs
 call KeyMap('n', 'DL', '1',       '1gt')
@@ -311,8 +306,7 @@ call KeyMap('n', 'DL', '6',       '6gt')
 call KeyMap('n', 'DL', '7',       '7gt')
 call KeyMap('n', 'DL', '8',       '8gt')
 call KeyMap('n', 'DL', '9',       '9gt')
-" call KeyMap('n', 'DL', 't',       ':tabnew<CR>:tabmove<CR>')
-call KeyMap('n', 'DL', 't',       ':tabnew<CR>')
+call KeyMap('n', 'DL', 't',       ':call Tabnew()<CR>')
 " call KeyMap('n', 'DL', ']',       'gt')
 " call KeyMap('n', 'DL', '[',       'gT')
 call KeyMap('n', 'DL', '}',       'gt')
@@ -329,10 +323,12 @@ call KeyMap('n',  'L', '0', ':call CwdCurrent()<CR>')
 
 """""""""" windows, buffers and files
 call KeyMap('ni', 'D', 's', ':up<CR>')
+call KeyMap('ni', 'D', 'S', ':w<CR>')
 call KeyMap('ni', 'D', 'w', ':bw<CR>')
 call KeyMap('ni', 'D', 'b', ':tab ball<CR>:tab ball<CR>:tab ball<CR>')
 call KeyMap('n', 'L', 'q',  ':q<CR>')
 call KeyMap('n', 'L', 's',  ':up<CR>')
+call KeyMap('n', 'L', 'S',  ':w<CR>')
 call KeyMap('n', 'L', 'w',  ':bw<CR>')
 call KeyMap('n', 'L', 'b',  ':tab ball<CR>:tab ball<CR>:tab ball<CR>')
 
@@ -343,8 +339,8 @@ call KeyMap('n', 'DL', 'E', ':call BrowserFromCurrentFilePath()<CR>') " open a f
 "call KeyMap('n', 'L',    'x',       ':ExtractFileToTabpage()<CR>')    " extract current file to a new buffer
 
 """""""""" fuf-fizzy
-call KeyMap('n', 'DL', 'r', ':tabnew<CR>:FufFizzyFile<CR>')
-call KeyMap('n', 'DL', 'R', ':tabnew<CR>:FufFizzyDir<CR>')
+call KeyMap('n', 'DL', 'r', ':call Tabnew()<CR>:FufFizzyFile<CR>')
+call KeyMap('n', 'DL', 'R', ':call Tabnew()<CR>:FufFizzyDir<CR>')
 call KeyMap('n', 'DL', '\', ':call FizzyReIndexCwd()<CR>')
 
 """""""""" selections
@@ -352,6 +348,12 @@ call KeyMap('n',  'D', 'a' ,      'ggVG')
 call KeyMap('ni', '',  '<F2>',    ':let @/ = ""\|nohlsearch<CR>')
 " select just pasted text
 nnoremap gb '[V']
+
+"""""""""" stolen from mswin.vim
+map <D-v> "*gP
+cmap <D-v> <C-R>*
+exe 'inoremap <script> <D-v>' paste#paste_cmd['i']
+exe 'vnoremap <script> <D-v>' paste#paste_cmd['v']
 
 """""""""" toggle switches
 call KeyMap('n', 'L',    'a',       ':set wrap!<CR>')

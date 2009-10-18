@@ -14,8 +14,7 @@ function! BrowserFromCurrentDir()
   " TODO check if still the case
   let g:OLDQUOTEREGISTER = @"
   let dirname = Slashify(expand('%:p:h'))
-  tabnew
-  tabmove
+  call Tabnew()
   exec "Explore"
   let @" = g:OLDQUOTEREGISTER
 endfunction
@@ -23,8 +22,7 @@ endfunction
 function! BrowserFromCurrentFilePath()
   let g:OLDQUOTEREGISTER = @"
   let dirname = Slashify(expand('%:p:h'))
-  tabnew
-  tabmove
+  call Tabnew()
   exec "Explore " . dirname
   let @" = g:OLDQUOTEREGISTER
 endfunction
