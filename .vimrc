@@ -125,7 +125,7 @@ set iskeyword=@,48-57,128-167,224-235,_  "default: @,48-57,_,192-255
 set listchars=tab:>.,trail:.,extends:>,precedes:<,eol:$
 
 """""""""" visual
-set guioptions=aAceimMgrb     " aA BAD (autocopy modeless selection to clipboard)?
+set guioptions=AceimMgrb      " NEVER EVER put ''a in here
 set number                    " show line numbers
 set laststatus=2              " always show status line
 set scrolloff=4               " minlines to show around cursor
