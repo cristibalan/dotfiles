@@ -30,7 +30,6 @@ endfunction
 
 function! CwdCurrent()
   call Cd(GetCwdCurrent())
-  call FizzyReIndexCwd()
 endfunction
 
 function! CwdUp()

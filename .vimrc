@@ -319,7 +319,7 @@ call KeyMap('n', 'D',  '<M-Right>', ':call MoveTabRight()<CR>')
 """""""""" cwd manipulation
 call KeyMap('n',  'L', '-', ':call CwdUp()<CR>')
 call KeyMap('n',  'L', '=', ':call CwdDown()<CR>')
-call KeyMap('n',  'L', '0', ':call CwdCurrent()<CR>')
+call KeyMap('n',  'L', '0', ':call CwdCurrent()<CR>:call FizzyReIndexCwd()<CR>')
 
 """""""""" windows, buffers and files
 call KeyMap('ni', 'D', 's', ':up<CR>')
