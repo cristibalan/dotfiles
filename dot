@@ -50,7 +50,7 @@ cmd = 'find ~/.* -type f -maxdepth 0 | grep -v "\.$" | grep -v -e "\.$" | sed -e
 files << `#{cmd}`
 
 # all tracked dirs
-cmd = 'find -d . -type d -maxdepth 1 ! -path "*.git/*" | grep -v -e "\.$" | sed -e "s/^\.\///"'
+cmd = 'find -d . -type d -maxdepth 1 ! -path "*/.git" | grep -v -e "\.$" | sed -e "s/^\.\///"'
 dirs = `#{cmd}`.split("\n")
 
 # all possibly untracked files
