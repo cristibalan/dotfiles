@@ -1,10 +1,32 @@
 #!/usr/bin/env ruby
 
+# USAGE
+#   dot --all
+#   dot --all --quiet
+#
+#   dot --fixable_links
+#   dot --other_links
+#   dot --conflict_files
+#   dot --uninstalled_files
+#
+#   dot --broken_links
+#     dot --broken_links --remove-broken
+#
+#   dot --untracked_files
+#     dot --untracked_files --ignore-missing
+#
+#   Global swithces
+#     --run             # actually run the commands
+#     --quiet           # don't echo each command
+#
 # TODO
 #   * allow reverse switches
 #   * remove horrible duplications
 #   * add switch to only list files, not whole commands
 #   * add switch to limit action to just a subsection of the tracked dotfiles
+#   * add --trace to allow tracing of a file through the conditions
+#   * add interactive processing of files
+#   * more decent ignores
 
 require 'pathname'
 require 'fileutils'
