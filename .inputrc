@@ -1,7 +1,10 @@
+# http://developer.apple.com/mac/library/DOCUMENTATION/DeveloperTools/gdb/gdb/gdb_28.html
+# swap 'end' and 'shift end', 'home' and 'shift home', 'page down' and 'shift page down', and 'page up' and 'shift page up'
 set bell-style none
 
-# show completions on single tab
+# show completions after single tab
 set show-all-if-ambiguous on
+
 # only for dirs and files
 set completion-ignore-case On
 
@@ -13,16 +16,10 @@ set input-meta On
 "\e[B": history-search-forward
 "\e[A": history-search-backward
 
-# alt+backspace
+# alt + backspace/delete
 "\ed": backward-kill-word
+"\e(": kill-word
 
-# ???
-
-#"\e[3~": delete-char
-
-# ?
-#"\e[1~": beginning-of-line
-#"\e[4~": end-of-line
-#"\e[5~": beginning-of-history
-#"\e[6~": end-of-history
-#"\e[2~": quoted-insert
+# alt + left/right
+"\e\e[C": forward-word
+"\e\e[D": backward-word
