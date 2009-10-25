@@ -49,8 +49,11 @@ export PAGER=less
 export VIM_APP_DIR=~/Apps/must\ have
 export INPUTRC=~/.inputrc
 
+export HISTCONTROL=erasedups
 export HISTSIZE=1000000
 shopt -s histappend
+
+shopt -s checkwinsize
 
 # hack && ship
 function current_git_branch {
