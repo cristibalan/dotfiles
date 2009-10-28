@@ -415,7 +415,9 @@ nnoremap gUir F_lgUt_
 " inoremap <ESC> <TAB><BS><ESC>
 " C-o & C-O form insert mode
 inoremap <S-CR> <C-o>o
+inoremap <D-o> <C-o>o
 inoremap <D-CR> <C-o>O
+inoremap <D-O> <C-o>O
 
 """""""""" other random TODO ?
 " echo highlight group at cursor location
