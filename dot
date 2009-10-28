@@ -170,7 +170,7 @@ if $OPTIONS[:broken_links]
   end
 end
 
-if $OPTIONS[:broken_links]
+if $OPTIONS[:other_links]
   puts "***** other links: #{other_links.length}"
   other_links.each do |file|
     exec "echo '#{file.in_home}'@ -\\> '#{file.in_home.real}'"
