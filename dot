@@ -20,6 +20,8 @@
 #     --quiet           # don't echo each command
 #
 # TODO
+#   * add --add/--collect command to allow seeding of a dotfiles repository
+#   * allow to put back a file from the repo and remove it from the repo and add it to ignore
 #   * allow reverse switches
 #   * remove horrible duplications
 #   * add switch to only list files, not whole commands
