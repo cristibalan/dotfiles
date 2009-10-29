@@ -47,7 +47,7 @@ ruby << RUBY
       require 'rubygems'
       require 'fizzy'
     rescue LoadError
-      echo 'Could not load fizzy. Get fizzy from http://github.com/evilchelu/fizzy'
+      puts 'Could not load fizzy. Get fizzy from http://github.com/evilchelu/fizzy'
     end
   end
 
