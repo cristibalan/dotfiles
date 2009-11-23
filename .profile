@@ -217,7 +217,7 @@ gemcd() {
 }
 
 _gemsomplete() {
-  COMPREPLY=($(compgen -W '$(ls `gem env gemdir`/doc)' -- ${COMP_WORDS[COMP_CWORD]}))
+  COMPREPLY=($(compgen -W '$(ls `gem env gemdir`/gems)' -- ${COMP_WORDS[COMP_CWORD]}))
   return 0
 }
 
