@@ -18,9 +18,15 @@ require 'fileutils'
 
 class Externals
   def initialize(repo=ARGV[0], svndir=ARGV[1])
-    @repo = repo
-    @dir = svndir || File.basename(@repo.gsub(/\/$/, "").gsub(/\/trunk$/, ""))
-    @svndir = "#{@dir}.svn"
+    if repo =~ /^\w+$/
+      @dir = repo
+      @svndir = "#{@dir}.svn"
+      @repo = `svn info #{@svndir}`.split("\n").grep(/URL: /)[0].split('URL: ')[1]
+    else
+      @repo = repo
+      @dir = svndir || File.basename(@repo.gsub(/\/$/, "").gsub(/\/trunk$/, ""))
+      @svndir = "#{@dir}.svn"
+    end
 
     echo "checking out with svn"
     if File.exists?(@svndir)
