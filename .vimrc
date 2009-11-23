@@ -327,12 +327,12 @@ call KeyMap('n',  'L', '0', ':call CwdCurrent()<CR>:call FizzyReIndexCwd()<CR>')
 """""""""" windows, buffers and files
 call KeyMap('ni', 'D', 's', ':up<CR>')
 call KeyMap('ni', 'D', 'S', ':w<CR>')
-call KeyMap('ni', 'D', 'w', ':bw<CR>')
+call KeyMap('ni', 'D', 'w', ':bw<CR>gT')
 call KeyMap('ni', 'D', 'b', ':tab ball<CR>:tab ball<CR>:tab ball<CR>')
 call KeyMap('n', 'L', 'q',  ':q<CR>')
 call KeyMap('n', 'L', 's',  ':up<CR>')
 call KeyMap('n', 'L', 'S',  ':w<CR>')
-call KeyMap('n', 'L', 'w',  ':bw<CR>')
+call KeyMap('n', 'L', 'w',  ':bw<CR>gT')
 call KeyMap('n', 'L', 'b',  ':tab ball<CR>:tab ball<CR>:tab ball<CR>')
 
 """""""""" directory browsing
