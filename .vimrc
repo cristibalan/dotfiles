@@ -247,6 +247,9 @@ autocmd VimLeavePre * 1,255bwipeout
 " remove empty or otherwise dead buffers when moving away from them
 autocmd TabLeave    * call OnTabLeave()
 
+" keep custom cwd the same across buffers
+autocmd BufEnter    * call CdReset()
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""" commands
