@@ -27,6 +27,7 @@ set runtimepath+=$HOME/.vim/NERD_commenter
 set runtimepath+=$HOME/.vim/matchit
 set runtimepath+=$HOME/.vim/surround
 set runtimepath+=$HOME/.vim/snipMate
+set runtimepath+=$HOME/.vim/scrooloose
 
 set runtimepath+=$HOME/.vim/ruby
 
