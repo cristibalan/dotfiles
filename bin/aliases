@@ -12,6 +12,8 @@ alias l="ls -AGlFT"
 alias lt="ls -AGlFTtr"
 alias g?="grep -e $1"
 alias gem="sudo gem"
+alias macgem="sudo macgem"
+alias git=hub
 #alias cd="cd && git status"
 
 # bash
@@ -77,8 +79,9 @@ alias gb="git branch"
 alias gba="git branch -a -v --color"
 
 # TODO check
-# alias gfr="git pull --rebase"
-alias gfr="git fetch && git rebase refs/remotes/origin/master"
+alias gfr="git pull --rebase"
+alias gpr="git pull --rebase"
+# alias gfr="git fetch && git rebase refs/remotes/origin/master"
 alias gci="git commit"
 alias gco="git checkout"
 function gco {
