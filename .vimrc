@@ -428,6 +428,10 @@ inoremap <D-o> <C-o>o
 inoremap <D-CR> <C-o>O
 inoremap <D-O> <C-o>O
 
+"""""""""" I love having two control keys instead of two alts
+inoremap <M-space> <C-p>
+inoremap <M-r> <C-r>
+
 """""""""" other random TODO ?
 " echo highlight group at cursor location
 map <leader>hl  :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
