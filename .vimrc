@@ -372,8 +372,13 @@ call KeyMap('n', 'L',    'p',       ':set paste!<CR>')
 " TODO check if works in normal mode
 call KeyMap('v',  '',     '<Tab>',   '>gv')
 call KeyMap('v',  'S',    '<Tab>',   '<gv')
-call KeyMap('v',  '',     '>>',   '>gv')
-call KeyMap('v',  '',     '<<',   '<gv')
+call KeyMap('v',  '',     '>>',      '>gv')
+call KeyMap('v',  '',     '<<',      '<gv')
+
+call KeyMap('n',  'M',    '<Right>', '>>')
+call KeyMap('n',  'M',    '<Left>',  '<<')
+call KeyMap('v',  'M',    '<Right>', '>gv')
+call KeyMap('v',  'M',    '<Left>',  '<gv')
 " TODO ?
 inoremap <silent> <S-Tab> <C-o><<<C-o>^
 
