@@ -1,2 +1,6 @@
 #!/bin/bash
-~/Apps/must-have/MacVim.app/Contents/MacOS/Vim -g -u ~/.vimrc -U ~/.gvimrc --servername CHELU --remote-tab-silent $*
+if [ -z $1 ];then
+  ~/Apps/must-have/MacVim.app/Contents/MacOS/Vim -g -u ~/.vimrc -U ~/.gvimrc --servername CHELU
+else
+  ~/Apps/must-have/MacVim.app/Contents/MacOS/Vim -g -u ~/.vimrc -U ~/.gvimrc --servername CHELU --remote-tab-silent $*
+fi
