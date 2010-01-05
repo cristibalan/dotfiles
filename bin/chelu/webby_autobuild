@@ -1,0 +1,2 @@
+#!/bin/sh
+webby clobber && webby blog:create_indexes && webby autobuild --no-web-server
