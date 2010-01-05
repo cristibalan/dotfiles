@@ -29,6 +29,8 @@ set runtimepath+=$HOME/.vim/surround
 set runtimepath+=$HOME/.vim/snipMate
 set runtimepath+=$HOME/.vim/scrooloose
 
+set runtimepath+=$HOME/.vim/vim-markdown
+
 set runtimepath+=$HOME/.vim/ruby
 
 " maybe enable
