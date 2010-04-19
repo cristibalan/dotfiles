@@ -23,6 +23,7 @@ set runtimepath+=$HOME/.vim/chelu
 
 set runtimepath+=$HOME/.vim/fuf
 set runtimepath+=$HOME/.vim/fuf-fizzy
+set runtimepath+=$HOME/.vim/vim-peepopen/plugin
 set runtimepath+=$HOME/.vim/NERD_commenter
 set runtimepath+=$HOME/.vim/matchit
 set runtimepath+=$HOME/.vim/surround

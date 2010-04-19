@@ -1,2 +1,7 @@
 #!/bin/bash
-~/Apps/must-have/MacVim.app/Contents/MacOS/Vim -u ~/.vimrc $*
+if [ -z $1 ];then
+  FILES="."
+else
+  FILES=$*
+fi
+~/Apps/MacVim.app/Contents/MacOS/Vim -u ~/.vimrc $FILES
