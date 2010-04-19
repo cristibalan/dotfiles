@@ -178,11 +178,6 @@ filetype plugin indent on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""" User options you might actually care about
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has("macunix")
-  set fuoptions=maxvert,maxhorz
-  set antialias
-endif
-
 set guifont=Monaco:h13
 set linespace=0                 " spacing between lines if font is too crowded
 
@@ -242,7 +237,17 @@ let NERDTreeWinSize = 60
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""" autocmds
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd GUIEnter    * set fullscreen
+function! OnVimEnter()
+  if has("macunix") && has("gui_running")
+    set antialias
+    " set fuoptions=maxvert,maxhorz
+    " macvim height calculation bug, forcing lines manually
+    set fuoptions=maxhorz
+    set fullscreen
+    set lines=44
+  endif
+endfunction
+autocmd VimEnter    * call OnVimEnter()
 
 " remove all buffers on exit so we don't have them as hidden on reopen
 autocmd VimLeavePre * 1,255bwipeout
