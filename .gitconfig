@@ -47,3 +47,5 @@
 
 [github]
   user = evilchelu
+[push]
+  default = tracking

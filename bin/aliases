@@ -7,13 +7,13 @@ alias vidir="EDITOR=v vidir"
 alias vi="v"
 alias vim="v"
 alias gvim="g"
-alias c="clear"
+# alias c="clear"
 alias l="ls -AGlFT"
 alias lt="ls -AGlFTtr"
 alias g?="grep -e $1"
-alias gem="sudo gem"
-alias macgem="sudo macgem"
-alias git=hub
+# alias gem="sudo gem"
+# alias macgem="sudo macgem"
+# alias git=hub
 #alias cd="cd && git status"
 
 # bash
@@ -93,6 +93,7 @@ function gco {
 }
 
 # rails
+alias r=rails
 alias rake?="rake -T | g? $1"
 alias ms="mongrel_rails start"
 alias mig="rake db:migrate"
@@ -101,3 +102,4 @@ alias migt="rake db:migrate RAILS_ENV=test"
 # stuff
 alias df="df -h"
 alias du="du -hs"
+alias scpr="rsync --partial --progress --rsh=ssh"

@@ -1,20 +1,4 @@
 #!/usr/bin/env ruby -w
-
-##
-# By Mike Clark
-#
-# From http://www.pragmaticautomation.com/cgi-bin/pragauto.cgi/Monitor/StakingOutFileChanges.rdoc
-#
-# Watches files and runs a command when any of them are modified.
-#
-# Can use Ruby's Dir[] to get file glob. Quote your args to take advantage of this.
-#
-#  rstakeout 'rake test:recent' **/*.rb
-#  => Unquoted uses the shell...only watches Ruby files one directory down
-#
-#  rstakeout 'rake test:recent' '**/*.rb'
-#  => Quoted uses Ruby...watches all Ruby files in all directories and subdirectories
-
 command = ARGV.shift
 files = {}
 
@@ -29,16 +13,15 @@ puts "=> #{command}"
 system(command)
 puts "=> done"
 
-puts "Watching #{files.keys.join(', ')}\n\nFiles: #{files.keys.length}"
+# puts "Watching #{files.keys.join(', ')}\n\nFiles: #{files.keys.length}"
+puts "Watching #{files.keys.length} files"
 
 trap('INT') do
   puts "\nQuitting..."
   exit
 end
 
-
 loop do
-
   sleep 1
 
   changed_file, last_changed = files.find { |file, last_changed|
@@ -52,5 +35,4 @@ loop do
     system(command)
     puts "=> done"
   end
-
 end

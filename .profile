@@ -4,7 +4,7 @@ bind Space:magic-space
 
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/mysql/bin:$PATH
-export PATH=/usr/local/git/bin:$PATH
+export PATH=/usr/local/share/npm/bin:$PATH
 #export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
 # export PATH=~/work/projects/kicker/bin:$PATH
@@ -39,12 +39,13 @@ export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib"
 # don't use gems as root
 #alias gemi='gem install --no-rdoc --no-ri -y'
 #alias gemi='gem install -y'
-# export GEM_HOME="$HOME/.gem/ruby/1.8"
-# export GEM_PATH="$GEM_HOME"
+export GEM_HOME="/usr/local/Cellar/gems/1.8"
+export GEM_PATH="$GEM_HOME"
 
 export DISPLAY=:0.0
 export EDITOR=g
 export GIT_EDITOR=gw
+# export EDITOR=’mvim -f -c “au VimLeave * !open -a Terminal”‘
 export PAGER=less
 export VIM_APP_DIR=~/Apps/must\ have
 export INPUTRC=~/.inputrc
@@ -224,3 +225,4 @@ _gemsomplete() {
 complete -o default -o nospace -F _gemsomplete gemdoc
 complete -o default -o nospace -F _gemsomplete gemcd
 
+if [[ -s /Users/chelu/.rvm/scripts/rvm ]] ; then source /Users/chelu/.rvm/scripts/rvm ; fi
