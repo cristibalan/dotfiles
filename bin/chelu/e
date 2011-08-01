@@ -1,0 +1,7 @@
+#!/bin/bash
+if [ -z $1 ];then
+  FILES=.
+else
+  FILES=\"\$@\"
+fi
+eval ~/Applications/MacVim.app/Contents/MacOS/Vim -g -u ~/.vimrc -U ~/.gvimrc --servername CHELU --remote-tab-silent $FILES

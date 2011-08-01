@@ -4,4 +4,4 @@ if [ -z $1 ];then
 else
   FILES=\"\$@\"
 fi
-eval ~/Apps/MacVim.app/Contents/MacOS/Vim -u ~/.vimrc -p $FILES
+eval ~/Applications/MacVim.app/Contents/MacOS/Vim -u ~/.vimrc -p $FILES
