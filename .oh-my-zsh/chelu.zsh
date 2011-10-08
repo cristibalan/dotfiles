@@ -21,6 +21,15 @@ compdef _git gsp=git-stash
 alias git-update-deleted="git ls-files -z --deleted | git update-index -z --remove --stdin"
 alias gud=git-update-deleted
 
+# aliases
+alias mig='rake db:migrate'
+alias migt='RAILS_ENV=test rake db:migrate'
+
+# rails
+alias r='./script/rails'
+alias rc='r c'
+alias rgm='r g migration'
+
 # alt + delete
 bindkey "^[(" backward-kill-word
 
