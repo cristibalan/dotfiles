@@ -18,17 +18,28 @@ compdef _git gss=git-stash
 alias gsp='git stash pop'
 compdef _git gsp=git-stash
 
+alias gba="git branch -a -v --color"
+
 alias git-update-deleted="git ls-files -z --deleted | git update-index -z --remove --stdin"
 alias gud=git-update-deleted
 
 # aliases
+# alias hub=git wtf?
+alias ....='cd ../../../'
+alias diff='diff -U 3'
+
+# rails
 alias mig='rake db:migrate'
 alias migt='RAILS_ENV=test rake db:migrate'
 
-# rails
 alias r='./script/rails'
 alias rc='r c'
 alias rgm='r g migration'
+alias be='bundle exec'
+
+# no fuckin correct
+# unsetopt correct_all
+alias rspec='nocorrect rspec'
 
 # alt + delete
 bindkey "^[(" backward-kill-word

@@ -1,4 +1,4 @@
---ignore-case
+# --ignore-case
 --all-types
 --pager=less -R -N -X
 --noheading

@@ -17,6 +17,7 @@
   retrack = '!retrack() { git config "branch.$1.remote" $(dirname "$2"); git config "branch.$1.merge" "refs/heads/$(basename "$2")"; }; retrack'
   lol = log --pretty=oneline --abbrev-commit --graph --decorate
   unadd = "reset HEAD"
+  latest = "for-each-ref --count=10 --sort=-committerdate --format='%(committerdate:short) %(refname:short)'"
 
 ; [format]
   ; pretty = format:"%Cblue%ar%Creset\t%s"
@@ -35,8 +36,8 @@
   color = auto
 
 [core]
-  excludesfile = /Users/chelu/.gitignore
-  ; editor = v
+	excludesfile = /Users/lu/.gitignore
+  editor = v
 
 [merge]
   summary = true

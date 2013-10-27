@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+# usage:
+# spt "spec/controllers/user/*.rb"
+# spt spec/models/comic_spec.rb models
+
+files = ARGV.shift
+
+action = "ruby #{files} #{ARGV.join(" ")}"
+cmd = %(rstakeout.rb "#{action}" "app/**/*.rb" "lib/**/*.rb" "test/**/*.rb")
+
+system(cmd)
