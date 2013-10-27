@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+if [ -f Gemfile ]; then
+  bundle exec rake $@
+else
+  rake $@
+fi

@@ -1,0 +1,23 @@
+/* append to
+ * /System/Library/Frameworks/WebKit.framework/Versions/A/Frameworks/WebCore.framework/Versions/A/Resources/inspector/inspector.css
+ * from: http://www.sitepen.com/blog/2009/08/13/hacking-safaris-inspector/
+ * */
+
+/*
+body #main {
+  top: 0;
+}
+body #toolbar {
+  height: 1px;
+  overflow: hidden;
+  display: none;
+}
+*/
+body #console-messages .monospace,
+body #console-messages .source-code {
+  font-size: 18px !important;
+}
+.console-group-messages .outline-disclosure, .console-group-messages .outline-disclosure ol {
+    line-height: 22px !important;
+}
+

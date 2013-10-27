@@ -9,12 +9,17 @@ Library/
 .gem
 .gems
 .git
+.guard_history
 .irb_history
 .lesshst
 .mysql_history
+.netrc
 .netrwhist
+.oh-my-zsh/
+.psql_history
 .punch.yml
 .rdebug_hist
+.rnd
 .sqlite_history
 .j
 .talyn.dat
@@ -30,3 +35,6 @@ Library/
 .mc/Tree
 tags
 tags-ja
+.zcompdump
+.zsh_history
+.zsh-update
