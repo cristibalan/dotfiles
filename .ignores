@@ -1,5 +1,6 @@
 bin/vendor/
 Library/
+defaults/
 .ignores
 .bash_history
 .CFUserTextEncoding

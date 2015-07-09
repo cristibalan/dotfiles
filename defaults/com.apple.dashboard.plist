@@ -1,0 +1,140 @@
+{
+    devmode = 1;
+    "layer-gadgets" =     (
+                {
+            32bit = 0;
+            id = acabaeec9d30ba41;
+            "in-layer" = 1;
+            path = "/Library/Widgets/Calendar.wdgt/";
+            "percent-offset-x" = 0;
+            "percent-offset-y" = 0;
+            "percent-type" = 2;
+            "percent-x" = "0.1423611";
+            "percent-y" = "0.2855555";
+            "pos-x" = 902;
+            "pos-y" = 257;
+            relativepath = "/Library/Widgets/Calendar.wdgt";
+            "separate-process" = 0;
+        },
+                {
+            32bit = 0;
+            id = d6c88e103ab6b841;
+            "in-layer" = 1;
+            path = "/Library/Widgets/Translation.wdgt/";
+            "percent-offset-x" = 0;
+            "percent-offset-y" = 0;
+            "percent-type" = 4;
+            "percent-x" = "0.3729167";
+            "percent-y" = "0.2155555";
+            "pos-x" = 537;
+            "pos-y" = 466;
+            relativepath = "/Library/Widgets/Translation.wdgt";
+            "separate-process" = 0;
+        },
+                {
+            32bit = 0;
+            id = a5326da99f39bb41;
+            "in-layer" = 1;
+            path = "/Library/Widgets/World Clock.wdgt/";
+            "percent-offset-x" = 0;
+            "percent-offset-y" = 0;
+            "percent-type" = 3;
+            "percent-x" = "0.2527778";
+            "percent-y" = "0.3455555";
+            "pos-x" = 904;
+            "pos-y" = 417;
+            relativepath = "/Library/Widgets/World Clock.wdgt";
+            "separate-process" = 0;
+        },
+                {
+            32bit = 0;
+            id = 0000000000000002;
+            "in-layer" = 1;
+            path = "/Library/Widgets/World Clock.wdgt/";
+            "percent-offset-x" = 0;
+            "percent-offset-y" = 0;
+            "percent-type" = 1;
+            "percent-x" = "0.4256944";
+            "percent-y" = "0.2788889";
+            "pos-x" = 613;
+            "pos-y" = 251;
+            relativepath = "/Library/Widgets/World Clock.wdgt";
+            "separate-process" = 0;
+        },
+                {
+            32bit = 0;
+            id = 0000000000000004;
+            "in-layer" = 1;
+            path = "/Library/Widgets/Weather.wdgt/";
+            "percent-offset-x" = 0;
+            "percent-offset-y" = 0;
+            "percent-type" = 1;
+            "percent-x" = "0.1465278";
+            "percent-y" = "0.2233333";
+            "pos-x" = 211;
+            "pos-y" = 279;
+            relativepath = "/Library/Widgets/Weather.wdgt";
+            "separate-process" = 0;
+        },
+                {
+            32bit = 0;
+            id = 554f76279131bb41;
+            "in-layer" = 1;
+            path = "/Library/Widgets/World Clock.wdgt/";
+            "percent-offset-x" = 0;
+            "percent-offset-y" = 0;
+            "percent-type" = 4;
+            "percent-x" = "0.01527778";
+            "percent-y" = "0.35";
+            "pos-x" = 22;
+            "pos-y" = 413;
+            relativepath = "/Library/Widgets/World Clock.wdgt";
+            "separate-process" = 0;
+        },
+                {
+            32bit = 0;
+            id = 64b1992f821cbb41;
+            "in-layer" = 1;
+            path = "/Library/Widgets/World Clock.wdgt/";
+            "percent-offset-x" = 0;
+            "percent-offset-y" = 0;
+            "percent-type" = 4;
+            "percent-x" = "0.2395833";
+            "percent-y" = "0.3488889";
+            "pos-x" = 345;
+            "pos-y" = 414;
+            relativepath = "/Library/Widgets/World Clock.wdgt";
+            "separate-process" = 0;
+        },
+                {
+            32bit = 0;
+            id = cb84735e4f28bb41;
+            "in-layer" = 1;
+            path = "/Library/Widgets/World Clock.wdgt/";
+            "percent-offset-x" = 0;
+            "percent-offset-y" = 0;
+            "percent-type" = 4;
+            "percent-x" = "0.1277778";
+            "percent-y" = "0.35";
+            "pos-x" = 184;
+            "pos-y" = 413;
+            relativepath = "/Library/Widgets/World Clock.wdgt";
+            "separate-process" = 0;
+        },
+                {
+            32bit = 0;
+            id = 95818fc051bcba41;
+            "in-layer" = 1;
+            path = "/Library/Widgets/World Clock.wdgt/";
+            "percent-offset-x" = 0;
+            "percent-offset-y" = 0;
+            "percent-type" = 3;
+            "percent-x" = "0.1354167";
+            "percent-y" = "0.3433333";
+            "pos-x" = 1073;
+            "pos-y" = 419;
+            relativepath = "/Library/Widgets/World Clock.wdgt";
+            "separate-process" = 0;
+        }
+    );
+}
