@@ -1,53 +1,7 @@
 [user]
-  ; name = Cristi Balan & Irina Dumitrascu
 	name = Cristi Balan
-  email = evil@che.lu
-
-[alias]
-  ci = commit
-  co = checkout
-  st = status
-  br = branch
-  diffc = diff --cached
-  put = push origin HEAD
-  nb = checkout -b
-  up = !git fetch origin && git rebase origin/`git branch | grep \"^*\" | cut -d\" \" -f2`
-  pending = !git --no-pager log origin/master..master && echo
-  ignored = "!git ls-files --others --exclude-standard"
-  retrack = '!retrack() { git config "branch.$1.remote" $(dirname "$2"); git config "branch.$1.merge" "refs/heads/$(basename "$2")"; }; retrack'
-  lol = log --pretty=oneline --abbrev-commit --graph --decorate
-  unadd = "reset HEAD"
-  latest = "for-each-ref --count=10 --sort=-committerdate --format='%(committerdate:short) %(refname:short)'"
-
-; [format]
-  ; pretty = format:"%Cblue%ar%Creset\t%s"
-
-[apply]
-  whitespace = nowarn
-
-[diff]
-  color = auto
-  rename = copy
-
-[pager]
-  color = true
-
-[status]
-  color = auto
-
-[core]
-	excludesfile = /Users/lu/.gitignore
-  editor = v
-
-[merge]
-  summary = true
-
-# also need this line in .gitattributes:
-# *.rb diff=ruby
-[diff "ruby"]
-  funcname = ^ *\\(\\(class\\|module\\|def\\) .*\\)
-
-[github]
-  user = evilchelu
+	email = cristibalan@gmail.com
+[credential]
+	helper = osxkeychain
 [push]
-  default = tracking
+	default = simple

@@ -1,5 +1,5 @@
 # --ignore-case
---all-types
+# --all-types
 --pager=less -R -N -X
 --noheading
 --break

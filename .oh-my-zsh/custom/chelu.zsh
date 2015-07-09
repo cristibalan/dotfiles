@@ -1,7 +1,7 @@
 #git plugin
 alias gl='git log'
 compdef _git gl=git-log
-alias ga='git add'
+alias ga='git add -A'
 compdef _git ga=git-add
 alias gd='git diff'
 compdef _git gd=git-diff

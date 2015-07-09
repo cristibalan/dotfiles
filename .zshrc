@@ -1,36 +1,60 @@
 # Path to your oh-my-zsh configuration.
-export ZSH=$HOME/.oh-my-zsh
+ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-export ZSH_THEME="robbyrussell"
+ZSH_THEME="sammy"
+
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
-# export CASE_SENSITIVE="true"
+# CASE_SENSITIVE="true"
 
-# Comment this out to disable weekly auto-update checks
-export DISABLE_AUTO_UPDATE="true"
+# Uncomment this to disable bi-weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment to change how often before auto-updates occur? (in days)
+# export UPDATE_ZSH_DAYS=13
 
 # Uncomment following line if you want to disable colors in ls
-# export DISABLE_LS_COLORS="true"
+# DISABLE_LS_COLORS="true"
 
 # Uncomment following line if you want to disable autosetting terminal title.
-# export DISABLE_AUTO_TITLE="true"
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment following line if you want to disable command autocorrection
+DISABLE_CORRECTION="true"
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment following line if you want to disable marking untracked files under
+# VCS as dirty. This makes repository status check for large repositories much,
+# much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
 
 # Customize to your needs...
-export PATH=~/bin/chelu:~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/Cellar/node/0.4.12/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:$PATH
+export PATH=~/bin/chelu:~/bin:/usr/local/git/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH
 
-# export GEM_HOME=/Users/lu/.gem/ruby/1.8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
 
-export PATH=$HOME/.rbenv/bin:$PATH
-eval "$(rbenv init - zsh)"
+export SAUHOME=~/Work/sauspiel
 
-export FORCE_SAUSPIEL_APPS_TZ=Lisbon
+#export PATH=$HOME/.rbenv/bin:$PATH
+#eval "$(rbenv init - zsh)"
+#export FORCE_SAUSPIEL_APPS_TZ=Lisbon

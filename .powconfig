@@ -1,1 +1,1 @@
-export PATH=$(rbenv prefix)/shims:$(rbenv prefix)/bin:$PATH
+source /etc/profile.d/chruby.sh
