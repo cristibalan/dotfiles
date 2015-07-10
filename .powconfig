@@ -1,1 +1,1 @@
-source /etc/profile.d/chruby.sh
+source /usr/local/share/chruby/chruby.sh

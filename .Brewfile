@@ -1,5 +1,7 @@
 # export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
+tap 'homebrew/services'
+
 brew 'caskroom/cask/brew-cask'
 
 cask 'menumeters'
@@ -37,11 +39,9 @@ cask 'transmission'
 cask 'vlc'
 cask 'alfred'
 cask 'macdown'
-cask 'quickcast'
+# cask 'quickcast'
 cask 'monotype-skyfonts'
 # cask 'sequel-pro'
-
-tap 'homebrew/services'
 
 # brew 'openssl'
 brew 'zsh'
@@ -67,6 +67,5 @@ brew 'midnight-commander'
 brew 'graphviz'
 brew 'youtube-dl'
 
-brew services restart
 cask 'rcdefaultapp'
 
