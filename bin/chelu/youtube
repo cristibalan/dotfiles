@@ -1,0 +1,2 @@
+#!/bin/bash
+youtube-dl --max-quality 37 --title --playlist-start=1 --playlist-end=100 --ignore-errors $1

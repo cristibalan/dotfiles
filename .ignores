@@ -6,7 +6,12 @@ defaults/
 .CFUserTextEncoding
 .cvspass
 .DS_Store
+.erlang.cookie
 .fastri-index
+.fbPager.log
+.fbPager.pickle
+.fbPager.selection.pickle
+.fbPager.sh
 .gem
 .gems
 .git
@@ -17,6 +22,7 @@ defaults/
 .netrc
 .netrwhist
 .oh-my-zsh/
+.pry_history
 .psql_history
 .punch.yml
 .rdebug_hist
