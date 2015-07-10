@@ -43,5 +43,6 @@ defaults/
 tags
 tags-ja
 .zcompdump-fluffy-5.0.2
+.zcompdump-roar-5.0.5
 .zsh_history
 .zsh-update
