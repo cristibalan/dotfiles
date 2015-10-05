@@ -58,3 +58,4 @@ export SAUHOME=~/Work/sauspiel
 #export PATH=$HOME/.rbenv/bin:$PATH
 #eval "$(rbenv init - zsh)"
 #export FORCE_SAUSPIEL_APPS_TZ=Lisbon
+eval "$(direnv hook zsh)"

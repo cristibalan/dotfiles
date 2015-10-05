@@ -16,6 +16,8 @@ rm .zshrc-e
 git clone https://github.com/cristibalan/dotfiles.git
 ./dotfiles/dot --all --run
 
+ln -s ~/dotfiles/.oh-my-zsh/custom/chelu.zsh ~/.oh-my-zsh/custom/chelu.zsh
+
 ./dotfiles/.osx
 
 # .vim

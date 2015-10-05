@@ -28,7 +28,7 @@ cask 'colorpicker-hex'
 cask 'secrets'
 # todo widget manager prefpane
 
-cask 'github'
+cask 'github-desktop'
 cask 'macvim'
 cask 'skype'
 cask 'spotify'
@@ -66,6 +66,9 @@ brew 'fpp'
 brew 'midnight-commander'
 brew 'graphviz'
 brew 'youtube-dl'
+
+brew 'ImageMagick'
+brew 'direnv'
 
 cask 'rcdefaultapp'
 

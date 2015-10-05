@@ -27,6 +27,7 @@ laptop.sh
 .psql_history
 .punch.yml
 .rdebug_hist
+.rediscli_history
 .rnd
 .sqlite_history
 .j
