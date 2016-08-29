@@ -44,6 +44,7 @@ cask 'monotype-skyfonts'
 # cask 'sequel-pro'
 
 # brew 'openssl'
+brew 'v8'
 brew 'zsh'
 brew 'git'
 brew 'wget'
@@ -69,6 +70,12 @@ brew 'youtube-dl'
 
 brew 'ImageMagick'
 brew 'direnv'
+brew 'asciinema'
 
 cask 'rcdefaultapp'
 
+cask 'whatsapp'
+cask 'controlplane'
+
+brew 'gitup'
+cask 'google-earth'
