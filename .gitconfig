@@ -5,7 +5,30 @@
 	helper = osxkeychain
 [push]
 	default = simple
+[alias]
+	patch = !git --no-pager diff --no-color[core]
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 227
+	frag = magenta bold
+	commit = 227 bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[diff-so-fancy]
+	markEmptyLines = true
+	stripLeadingSymbols = true
+	changeHunkIndicators = true
+	useUnicodeRuler = true

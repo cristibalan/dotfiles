@@ -40,8 +40,10 @@ DISABLE_CORRECTION="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git history-substring-search ssh-agent)
+plugins=(git history-substring-search) # ssh-agent
 # zstyle :omz:plugins:ssh-agent identities id_rsa
+
+# export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
 source $ZSH/oh-my-zsh.sh
 source /usr/local/opt/chruby/share/chruby/chruby.sh
@@ -59,4 +61,17 @@ export SAUHOME=~/Work/sauspiel
 #export PATH=$HOME/.rbenv/bin:$PATH
 #eval "$(rbenv init - zsh)"
 #export FORCE_SAUSPIEL_APPS_TZ=Lisbon
-eval "$(direnv hook zsh)"
+
+# openssl from homebrew
+export LDFLAGS="-L/usr/local/opt/openssl/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+# export PATH="$HOME/.erlenv/bin:$PATH"
+# eval "$(erlenv init -)"
+# export PATH="$HOME/.exenv/bin:$PATH"
+# eval "$(exenv init -)"
+# export NVM_DIR="$HOME/.nvm"
+# . "/usr/local/opt/nvm/nvm.sh"
+
+export BOOT_JVM_OPTIONS="-client -Xmx2g -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xverify:none"
