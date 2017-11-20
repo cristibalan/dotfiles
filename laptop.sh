@@ -18,7 +18,9 @@ git clone https://github.com/cristibalan/dotfiles.git
 
 ln -s ~/dotfiles/.oh-my-zsh/custom/chelu.zsh ~/.oh-my-zsh/custom/chelu.zsh
 
-./dotfiles/.osx
+# ./dotfiles/.osx
+
+git clone https://github.com/cristibalan/vimfiles.git
 
 # .vim
 mv ~/.vim ~/.vim.old
@@ -30,6 +32,11 @@ ln -s ~/.vim/gvimrc.vim ~/.gvimrc
 
 # homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+brew install iterm
+
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/dotfiles/iterm2"
+defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 
 brew install openssl
 brew unlink openssl && brew link openssl --force
