@@ -30,45 +30,30 @@ mv ~/.gvimrc ~/.gvimrc-old
 ln -s ~/.vim/vimrc.vim  ~/.vimrc
 ln -s ~/.vim/gvimrc.vim ~/.gvimrc
 
+git clone https://github.com/cristibalan/.spacemacs.d.git
+
 # homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-brew install iterm
+brew install mas
+brew tap Homebrew/bundle
+# for java8
+brew tap caskroom/versions
 
-defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/dotfiles/iterm2"
+# iterm
+brew cask install iterm
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/dotfiles/Library/iterm2"
 defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 
-brew install openssl
-brew unlink openssl && brew link openssl --force
+# macvim
+brew install ruby
+brew cask install macvim
 
-brew tap Homebrew/bundle
-brew bundle -v 2>&1 | tee ~/laptop.log
-
-brew unlink openssl && brew link openssl --force
-
-ruby-install ruby 2.2.2
+# ruby
+ruby-install ruby 2.4.1
 gem install bundler
 
-brew services start postgresql
-brew services start mysql
+# brew bundle -v 2>&1 | tee ~/brew-bundle.log
 
-# pow
-brew install pow
-
-# Create the required host directories:
-mkdir -p ~/Library/Application\ Support/Pow/Hosts
-ln -s ~/Library/Application\ Support/Pow/Hosts ~/.pow
-
-# Setup port 80 forwarding and launchd agents:
-sudo pow --install-system
-pow --install-local
-
-# Load launchd agents:
-sudo launchctl load -w /Library/LaunchDaemons/cx.pow.firewall.plist
-launchctl load -w ~/Library/LaunchAgents/cx.pow.powd.plist
-
-gem install powder
-
-# Show the 'Developer' checkbox in spotlight preferences
-touch /Applications/Xcode.app
-
+# brew services start postgresql
+# brew services start mysql
