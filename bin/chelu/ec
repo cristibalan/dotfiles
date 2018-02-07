@@ -1,0 +1,29 @@
+#!/bin/bash
+# Based on: https://stackoverflow.com/a/38276432
+
+EMACSPATH=/Applications/Emacs.app/Contents/MacOS
+
+# Check if an emacs server is available
+if ! (${EMACSPATH}/bin/emacsclient --eval "t"  2> /dev/null > /dev/null )
+then
+    # Start server if not running
+    if [ -z "${@}" ]
+    then
+        nohup ${EMACSPATH}/Emacs --chdir "${PWD}" . 2>&1 > /dev/null &
+    else
+        nohup ${EMACSPATH}/Emacs --chdir "${PWD}" "${@}" 2>&1 > /dev/null &
+    fi
+
+else
+    # The emacs server is available so use emacsclient
+    if [ -z "${@}" ]
+    then
+        # ${EMACSPATH}/bin/emacsclient .
+        ${EMACSPATH}/bin/emacsclient --no-wait .
+    else
+        ${EMACSPATH}/bin/emacsclient --no-wait "${@}"
+    fi
+
+    # Bring emacs to the foreground
+    ${EMACSPATH}/bin/emacsclient --eval "(x-focus-frame nil)"
+fi

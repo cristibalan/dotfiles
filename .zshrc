@@ -15,7 +15,7 @@ ZSH_THEME="sammy"
 # CASE_SENSITIVE="true"
 
 # Uncomment this to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment to change how often before auto-updates occur? (in days)
 # export UPDATE_ZSH_DAYS=13
@@ -47,7 +47,7 @@ plugins=(git history-substring-search) # ssh-agent
 
 source $ZSH/oh-my-zsh.sh
 source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
 
 # Customize to your needs...
 export PATH=~/bin/chelu:~/bin:/usr/local/git/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH
@@ -71,7 +71,12 @@ export PATH="/usr/local/opt/openssl/bin:$PATH"
 # eval "$(erlenv init -)"
 # export PATH="$HOME/.exenv/bin:$PATH"
 # eval "$(exenv init -)"
-# export NVM_DIR="$HOME/.nvm"
-# . "/usr/local/opt/nvm/nvm.sh"
+ export NVM_DIR="$HOME/.nvm"
+  . "/usr/local/opt/nvm/nvm.sh"
 
 export BOOT_JVM_OPTIONS="-client -Xmx2g -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xverify:none"
+export JOURNAL_HOME="/Users/cristi/work/nextjournal/nextjournal/apps/journal"
+
+# eval $(thefuck --alias --enable-experimental-instant-mode)
+eval $(thefuck --alias)
+

@@ -1,0 +1,2 @@
+#!/bin/bash
+java -XX:+UnlockCommercialFeatures -XX:+UseAppCDS -Xshare:on -XX:SharedArchiveFile=/Users/cristi/work/bin/zprint.filter.cache -cp /Users/cristi/work/bin/zprint-filter-0.4.4 zprint.main '{:style :community}' "${1//\\}"

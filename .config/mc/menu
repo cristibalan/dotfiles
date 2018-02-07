@@ -1,0 +1,66 @@
+shell_patterns=0
++ ! t t
+@       Do something on the current file
+	CMD=%{Enter command}
+	$CMD %f
+
++ t t
+@       Do something on the tagged files
+	set %t; CMD=%{Enter command}
+	while [ -n "$1" ]; do
+	  $CMD "$1"
+	  shift
+	done
+	
+c       Compress the current subdirectory (tar.bz2)
+	Pwd=`basename %d /`
+	echo -n "Name of the compressed file (without extension) [$Pwd]: "
+	read tar
+        if [ "$tar"x = x ]; then tar="$Pwd"; fi
+	cd .. && \
+	tar cf - "$Pwd" | bzip2 -f > "$tar.tar.bz2" && \
+	echo "../$tar.tar.bz2 created."
+
++ f \.tar.gz$ | f \.tgz$ | f \.tpz$ | f \.tar.Z$ | f \.tar.z$ | f \.tar.bz2$ | f \.tar.F$ | f \.zip$ & t r & ! t t
+x       Extract compressed tar file to subdirectory
+	unset D
+	set gzip -cd
+	case %f in
+	  *.tar.gz) D="`basename %f .tar.gz`";;
+	  *.tgz)    D="`basename %f .tgz`";;
+	  *.tpz)    D="`basename %f .tpz`";;
+	  *.tar.Z)  D="`basename %f .tar.Z`";;
+	  *.tar.z)  D="`basename %f .tar.z`";;
+	  *.tar.bz2) D="`basename %f .tar.bz2`"; set bunzip2 -c ;;
+	  *.tar.F) D="`basename %f .tar.F`"; set freeze -dc;;
+    *.zip) unzip %f; exit;;
+	esac
+	#echo -n "Create subdirectory?(y/n) [y]: "
+	#read subdir
+  #      if [ "$tar"x = x ]; then tar="$Pwd"; fi
+	#cd .. && \
+	mkdir $D; cd $D && ($1 $2 ../%f | tar xvf -)
+
++ t t
+X       Extract compressed tar files to subdirectories
+	for i in %t
+        do
+	  set gzip -dc
+          unset D
+	  case $i in
+	    *.tar.gz)  D="`basename $i .tar.gz`";;
+	    *.tgz)     D="`basename $i .tgz`";;
+	    *.tpz)     D="`basename $i .tpz`";;
+	    *.tar.Z)   D="`basename $i .tar.Z`";;
+	    *.tar.z)   D="`basename $i .tar.z`";;
+	    *.tar.F)   D="`basename $i .tar.F`"; set freeze -dc;;
+	    *.tar.bz2) D="`basename $i .tar.bz2`"; set bunzip2 -c;;
+      *.zip) unzip $i; continue;;
+          esac
+	  mkdir $D; (cd $D && $1 $2 ../$i | tar xvf -)
+        done
+
+= ! t t
+o       Open in default application
+        open %f
+

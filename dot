@@ -29,6 +29,7 @@
 #   * add --trace to allow tracing of a file through the conditions
 #   * add interactive processing of files
 #   * more decent ignores
+#   * add --untracked_dirs
 
 require 'pathname'
 require 'fileutils'

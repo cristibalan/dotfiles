@@ -8,6 +8,8 @@
 # ignores
 --ignore-dir=log
 --ignore-dir=tmp
+--ignore-dir=compiled
+--ignore-dir=target
 
 # extra file types
 --type-add
