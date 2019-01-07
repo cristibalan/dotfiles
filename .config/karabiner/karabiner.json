@@ -2402,6 +2402,25 @@
                                 "type": "basic"
                             },
                             {
+                                "from": {
+                                    "key_code": "i",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "left_shift",
+                                          "left_command",
+                                          "left_control",
+                                          "left_option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/TextEdit.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
                                 "conditions": [
                                     {
                                         "name": "sticky_caps",
@@ -2410,7 +2429,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "e"
+                                    "key_code": "i"
                                 },
                                 "to": [
                                     {
@@ -2421,6 +2440,25 @@
                                             "name": "sticky_caps",
                                             "value": 0
                                         }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "left_shift",
+                                          "left_command",
+                                          "left_control",
+                                          "left_option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/fman.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -2450,6 +2488,25 @@
                                 "type": "basic"
                             },
                             {
+                                "from": {
+                                    "key_code": "g",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "left_shift",
+                                          "left_command",
+                                          "left_control",
+                                          "left_option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/GitX.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
                                 "conditions": [
                                     {
                                         "name": "sticky_caps",
@@ -2474,25 +2531,20 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "name": "sticky_caps",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
                                 "from": {
-                                    "key_code": "k"
+                                    "key_code": "l",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "left_shift",
+                                          "left_command",
+                                          "left_control",
+                                          "left_option"
+                                      ]
+                                    }
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Slack.app'"
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "sticky_caps",
-                                            "value": 0
-                                        }
+                                        "shell_command": "open '/Applications/Karabiner-Elements.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -2522,6 +2574,68 @@
                                 "type": "basic"
                             },
                             {
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "left_shift",
+                                          "left_command",
+                                          "left_control",
+                                          "left_option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/Slack.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "sticky_caps",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "k"
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/Slack.app'"
+                                    },
+                                    {
+                                        "set_variable": {
+                                            "name": "sticky_caps",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "m",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "left_shift",
+                                          "left_command",
+                                          "left_control",
+                                          "left_option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/Gmail.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
                                 "conditions": [
                                     {
                                         "name": "sticky_caps",
@@ -2534,13 +2648,32 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Spotify.app'"
+                                        "shell_command": "open '/Applications/Gmail.app'"
                                     },
                                     {
                                         "set_variable": {
                                             "name": "sticky_caps",
                                             "value": 0
                                         }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "p",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "left_shift",
+                                          "left_command",
+                                          "left_control",
+                                          "left_option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/System Preferences.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -2570,6 +2703,41 @@
                                 "type": "basic"
                             },
                             {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "right_shift"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/Safari.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "left_shift",
+                                          "left_command",
+                                          "left_control",
+                                          "left_option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/Safari.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
                                 "conditions": [
                                     {
                                         "name": "sticky_caps",
@@ -2594,6 +2762,41 @@
                                 "type": "basic"
                             },
                             {
+                                "from": {
+                                    "key_code": "q",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "right_shift"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/iTerm.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "q",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "left_shift",
+                                          "left_command",
+                                          "left_control",
+                                          "left_option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/iTerm.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
                                 "conditions": [
                                     {
                                         "name": "sticky_caps",
@@ -2602,7 +2805,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "t"
+                                    "key_code": "q"
                                 },
                                 "to": [
                                     {
@@ -2618,6 +2821,41 @@
                                 "type": "basic"
                             },
                             {
+                                "from": {
+                                    "key_code": "e",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "right_shift"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/MacVim.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "e",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "left_shift",
+                                          "left_command",
+                                          "left_control",
+                                          "left_option"
+                                      ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open '/Applications/MacVim.app'"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
                                 "conditions": [
                                     {
                                         "name": "sticky_caps",
@@ -2626,7 +2864,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "v"
+                                    "key_code": "e"
                                 },
                                 "to": [
                                     {
@@ -2681,9 +2919,6 @@
                                     "modifiers": {
                                         "mandatory": [
                                             "left_command"
-                                        ],
-                                        "optional": [
-                                            "left_shift"
                                         ]
                                     }
                                 },
@@ -2691,11 +2926,11 @@
                                     {
                                         "key_code": "tab",
                                         "modifiers": [
-                                            "left_command"
+                                            "left_shift",
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
                                         ]
-                                    },
-                                    {
-                                        "key_code": "vk_none"
                                     }
                                 ],
                                 "type": "basic"
@@ -2705,20 +2940,22 @@
                                     "key_code": "tab",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_option"
-                                        ],
-                                        "optional": [
-                                            "left_shift"
+                                            "left_command", "left_shift"
+                                        ]
+                                    }
+                                },
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "escape",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command"
                                         ]
                                     }
                                 },
                                 "to": [
-                                    {
-                                        "key_code": "tab",
-                                        "modifiers": [
-                                            "left_command"
-                                        ]
-                                    },
                                     {
                                         "key_code": "tab",
                                         "modifiers": [

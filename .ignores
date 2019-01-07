@@ -5,11 +5,12 @@
 .clojure_history
 .config/.mono/
 .config/configstore/
+.config/hub
 .config/karabiner/assets/
 .config/mc/hotlist
 .config/mc/panels.ini
-.config/yarn/
 .config/neovim/.netrwhist
+.config/yarn/
 .cvspass
 .erlang.cookie
 .fastri-index

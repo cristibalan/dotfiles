@@ -46,8 +46,6 @@ plugins=(git history-substring-search) # ssh-agent
 # export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 
 source $ZSH/oh-my-zsh.sh
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
 
 # Customize to your needs...
 export PATH=~/bin/chelu:~/bin:/usr/local/git/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH
@@ -67,6 +65,12 @@ export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
+# put old version of pg in path
+export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH"
+
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
+
 # export PATH="$HOME/.erlenv/bin:$PATH"
 # eval "$(erlenv init -)"
 # export PATH="$HOME/.exenv/bin:$PATH"
@@ -79,4 +83,6 @@ export JOURNAL_HOME="/Users/cristi/work/nextjournal/nextjournal/apps/journal"
 
 # eval $(thefuck --alias --enable-experimental-instant-mode)
 eval $(thefuck --alias)
+
+eval "$(hub alias -s)"
 

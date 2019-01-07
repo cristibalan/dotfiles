@@ -1,0 +1,5 @@
+cask 'anki'
+cask 'cgoban'
+cask 'gopanda'
+cask 'leela'
+cask 'steam'

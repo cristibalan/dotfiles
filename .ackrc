@@ -6,10 +6,18 @@
 --color
 
 # ignores
---ignore-dir=log
---ignore-dir=tmp
+--ignore-dir=.cljs_nashorn_repl
+--ignore-dir=.cljs_rhino_repl
+--ignore-dir=.cpcache
 --ignore-dir=compiled
+# --ignore-dir=fixtures
+--ignore-dir=log
+--ignore-dir=logs
+--ignore-dir=mnt
+--ignore-dir=nashorn_code_cache
+# --ignore-dir=public
 --ignore-dir=target
+--ignore-dir=tmp
 
 # extra file types
 --type-add
