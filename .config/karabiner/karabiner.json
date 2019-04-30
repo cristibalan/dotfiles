@@ -2372,31 +2372,20 @@
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "name": "sticky_caps",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
                                 "from": {
-                                    "key_code": "c"
+                                    "key_code": "c",
+                                    "modifiers": {
+                                      "mandatory": [
+                                          "left_shift",
+                                          "left_command",
+                                          "left_control",
+                                          "left_option"
+                                      ]
+                                    }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "c",
-                                        "modifiers": [
-                                            "left_shift",
-                                            "left_command",
-                                            "left_control",
-                                            "left_option"
-                                        ]
-                                    },
-                                    {
-                                        "set_variable": {
-                                            "name": "sticky_caps",
-                                            "value": 0
-                                        }
+                                        "shell_command": "open '/Applications/Chromium.app'"
                                     }
                                 ],
                                 "type": "basic"
