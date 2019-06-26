@@ -876,22 +876,6 @@
                                     "key_code": "s",
                                     "modifiers": {
                                       "mandatory": [
-                                          "right_shift"
-                                      ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/Safari.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "s",
-                                    "modifiers": {
-                                      "mandatory": [
                                           "left_shift",
                                           "left_command",
                                           "left_control",
@@ -935,22 +919,6 @@
                                     "key_code": "q",
                                     "modifiers": {
                                       "mandatory": [
-                                          "right_shift"
-                                      ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/iTerm.app'"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "q",
-                                    "modifiers": {
-                                      "mandatory": [
                                           "left_shift",
                                           "left_command",
                                           "left_control",
@@ -985,22 +953,6 @@
                                             "name": "sticky_caps",
                                             "value": 0
                                         }
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "e",
-                                    "modifiers": {
-                                      "mandatory": [
-                                          "right_shift"
-                                      ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open '/Applications/MacVim.app'"
                                     }
                                 ],
                                 "type": "basic"
