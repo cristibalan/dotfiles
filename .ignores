@@ -5,8 +5,10 @@
 .clojure_history
 .config/.mono/
 .config/configstore/
+.config/iterm2/AppSupport
 .config/hub
 .config/karabiner/assets/
+.config/karabiner/automatic_backups/
 .config/mc/hotlist
 .config/mc/panels.ini
 .config/neovim/.netrwhist
@@ -29,6 +31,7 @@
 .mysql_history
 .netrc
 .netrwhist
+.node_repl_history
 .oh-my-zsh/
 .pry_history
 .psql_history
@@ -39,12 +42,14 @@
 .slime_paste
 .sqlite_history
 .talyn.dat
+.tool-versions
 .vampkey
 .vim-fuf
 .vimfuzzyfinder
 .viminfo
 .wget-hsts
 .yarnrc
+.zcompdump
 .zsh-update
 .zsh_history
 Library/
