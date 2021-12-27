@@ -1,1 +1,1 @@
-wget -b -c -r -np --limit-rate=100000 -l 0 -p -k -H -i _files.txt -o _log.txt --exclude-domains=example.com
+wget -b -c -r -np --limit-rate=100000 -l 0 -p -k -H -i _files.txt -o _log.txt --exclude-domains=example.com $*
